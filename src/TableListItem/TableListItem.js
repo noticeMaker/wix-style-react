@@ -10,6 +10,7 @@ const getWidthStyle = options =>
     '',
   );
 
+/** TableListItem */
 const TableListItem = ({ options }) => {
   return (
     <div
@@ -26,6 +27,8 @@ const TableListItem = ({ options }) => {
     </div>
   );
 };
+
+TableListItem.displayName = 'TableListItem';
 
 TableListItem.propTypes = {
   options: PropTypes.arrayOf(
