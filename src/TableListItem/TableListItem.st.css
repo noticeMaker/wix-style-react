@@ -1,3 +1,14 @@
 .root {
   display: grid;
+  padding: 0 24px;
+}
+
+.smallVerticalPadding {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.mediumVerticalPadding {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }

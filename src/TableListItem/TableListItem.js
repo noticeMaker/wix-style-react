@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { dataHooks } from './constants';
 import styles from './TableListItem.st.css';
+
+export const VERTICAL_PADDING = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+};
 
 const getWidthStyle = options =>
   options.reduce(
@@ -11,10 +17,13 @@ const getWidthStyle = options =>
   );
 
 /** TableListItem */
-const TableListItem = ({ options }) => {
+const TableListItem = ({ options, verticalPadding }) => {
   return (
     <div
-      className={styles.root}
+      className={classNames(
+        styles.root,
+        styles[`${verticalPadding}VerticalPadding`],
+      )}
       style={{
         gridTemplateColumns: getWidthStyle(options),
       }}
@@ -37,6 +46,14 @@ TableListItem.propTypes = {
       width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
   ).isRequired,
+  verticalPadding: PropTypes.oneOf([
+    VERTICAL_PADDING.SMALL,
+    VERTICAL_PADDING.MEDIUM,
+  ]),
+};
+
+TableListItem.defaultProps = {
+  verticalPadding: VERTICAL_PADDING.SMALL,
 };
 
 export default TableListItem;

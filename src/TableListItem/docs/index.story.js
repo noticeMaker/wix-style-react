@@ -17,6 +17,7 @@ import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 
 import TableListItem from '..';
+import { VERTICAL_PADDING } from '../TableListItem';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -29,6 +30,7 @@ export default {
 
   componentProps: {
     options: [{ value: 'hello', width: 42 }],
+    verticalPadding: VERTICAL_PADDING.SMALL,
   },
 
   exampleProps: {},

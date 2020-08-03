@@ -41,9 +41,23 @@ describe('TableListItem', () => {
       ];
       const { driver } = render(<TableListItem options={options} />);
 
-      expect(await driver.getStyle(0)).toContain(
+      expect(await driver.getStyle()).toContain(
         'grid-template-columns: 20px 30% 1fr 20px',
       );
+    });
+  });
+
+  describe('verticalPadding prop', () => {
+    it('should render small item', async () => {
+      const { driver } = render(<TableListItem options={[{ value: 'Hi' }]} />);
+      expect(await driver.isVerticalPaddingSmall()).toBe(true);
+    });
+
+    it('should render medium item', async () => {
+      const { driver } = render(
+        <TableListItem options={[{ value: 'Hi' }]} verticalPadding="medium" />,
+      );
+      expect(await driver.isVerticalPaddingMedium()).toBe(true);
     });
   });
 });
