@@ -31,6 +31,7 @@ export default {
   componentProps: {
     options: [{ value: 'hello', width: 42 }],
     verticalPadding: VERTICAL_PADDING.SMALL,
+    checkbox: true,
   },
 
   exampleProps: {},
@@ -59,6 +60,36 @@ export default {
             title: 'Simple Usage',
             text: 'TODO',
             source: '<TableListItem options={[{value: "hello"}]} />',
+          }),
+          example({
+            title: 'more advanced',
+            text: 'TODO',
+            source: `<div>
+                <TableListItem
+                  checkbox
+                  options={[
+                    { value: 'Personal Finance', width: '2fr' },
+                    { value: '7 posts', width: '1fr' },
+                    { value: '27 April 2020', width: '20%' },
+                  ]}
+                />
+                <TableListItem
+                  checkbox
+                  options={[
+                    { value: 'Banking & Insurance', width: '2fr' },
+                    { value: '12 posts', width: '1fr' },
+                    { value: '23 April 2020', width: '20%' },
+                  ]}
+                />
+                <TableListItem
+                  checkbox
+                  options={[
+                    { value: 'Investing', width: '2fr' },
+                    { value: '4 posts', width: '1fr' },
+                    { value: '30 April 2020', width: '20%' },
+                  ]}
+                />
+              </div>`,
           }),
         ],
       }),

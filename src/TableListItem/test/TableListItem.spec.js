@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import {
   createRendererWithUniDriver,
   cleanup,
@@ -58,6 +59,36 @@ describe('TableListItem', () => {
         <TableListItem options={[{ value: 'Hi' }]} verticalPadding="medium" />,
       );
       expect(await driver.isVerticalPaddingMedium()).toBe(true);
+    });
+  });
+
+  describe('checkbox props', () => {
+    it('should display checkbox', async () => {
+      const { driver } = render(
+        <TableListItem options={[{ value: 'Hi' }]} checkbox />,
+      );
+      expect(await driver.doesCheckboxExist()).toBe(true);
+      expect(await driver.checkboxDriver().isChecked()).toBe(false);
+    });
+
+    it('should display checked checkbox', async () => {
+      const { driver } = render(
+        <TableListItem options={[{ value: 'Hi' }]} checkbox checked />,
+      );
+      expect(await driver.checkboxDriver().isChecked()).toBe(true);
+    });
+
+    it('should call onCheckboxChange', async () => {
+      const stub = sinon.stub();
+      const { driver } = render(
+        <TableListItem
+          options={[{ value: 'Hi' }]}
+          checkbox
+          onCheckboxChange={stub}
+        />,
+      );
+      await driver.checkboxDriver().click();
+      expect(stub.calledOnce).toBe(true);
     });
   });
 });

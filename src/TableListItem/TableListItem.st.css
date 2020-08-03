@@ -1,6 +1,16 @@
+:import {
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: D80;
+}
+
 .root {
-  display: grid;
+  background-color: value(D80);
   padding: 0 24px;
+}
+
+.optionsContainer {
+  display: grid;
+  width: 100%;
 }
 
 .smallVerticalPadding {
@@ -11,4 +21,8 @@
 .mediumVerticalPadding {
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+.checkbox {
+  margin: 0 12px 0 6px;
 }

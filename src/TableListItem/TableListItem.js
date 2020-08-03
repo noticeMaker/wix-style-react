@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { dataHooks } from './constants';
 import styles from './TableListItem.st.css';
+import Checkbox from '../Checkbox';
+import Box from '../Box';
 
 export const VERTICAL_PADDING = {
   SMALL: 'small',
@@ -17,23 +19,43 @@ const getWidthStyle = options =>
   );
 
 /** TableListItem */
-const TableListItem = ({ options, verticalPadding }) => {
+const TableListItem = ({
+  options,
+  verticalPadding,
+  checkbox,
+  checked,
+  onCheckboxChange,
+}) => {
   return (
-    <div
+    <Box
       className={classNames(
         styles.root,
         styles[`${verticalPadding}VerticalPadding`],
       )}
-      style={{
-        gridTemplateColumns: getWidthStyle(options),
-      }}
     >
-      {options.map(({ value }, index) => (
-        <div key={index} data-hook={dataHooks.tableListItemValue}>
-          {value}
-        </div>
-      ))}
-    </div>
+      {checkbox && (
+        <Checkbox
+          className={styles.checkbox}
+          checked={checked}
+          onChange={onCheckboxChange}
+          dataHook={dataHooks.tableListItemCheckbox}
+        />
+      )}
+      <Box
+        className={styles.optionsContainer}
+        style={{
+          gridTemplateColumns: getWidthStyle(options),
+        }}
+        verticalAlign="middle"
+        dataHook={dataHooks.tableListItemOptionsContainer}
+      >
+        {options.map(({ value }, index) => (
+          <div key={index} data-hook={dataHooks.tableListItemValue}>
+            {value}
+          </div>
+        ))}
+      </Box>
+    </Box>
   );
 };
 
@@ -50,6 +72,9 @@ TableListItem.propTypes = {
     VERTICAL_PADDING.SMALL,
     VERTICAL_PADDING.MEDIUM,
   ]),
+  checkbox: PropTypes.bool,
+  checked: PropTypes.bool,
+  onCheckboxChange: PropTypes.func,
 };
 
 TableListItem.defaultProps = {
