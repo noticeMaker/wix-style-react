@@ -11,12 +11,20 @@ export const VERTICAL_PADDING = {
   MEDIUM: 'medium',
 };
 
+const ALIGN = {
+  left: 'left',
+  center: 'center',
+  right: 'right',
+};
+
 const getWidthStyle = options =>
   options.reduce(
     (acc, { width }) =>
       `${acc} ${typeof width === 'number' ? width + 'px' : width}`,
     '',
   );
+
+const isAlignmentValid = align => align && Object.keys(ALIGN).includes(align);
 
 /** TableListItem */
 const TableListItem = ({
@@ -49,8 +57,12 @@ const TableListItem = ({
         verticalAlign="middle"
         dataHook={dataHooks.tableListItemOptionsContainer}
       >
-        {options.map(({ value }, index) => (
-          <div key={index} data-hook={dataHooks.tableListItemValue}>
+        {options.map(({ value, align }, index) => (
+          <div
+            key={index}
+            data-hook={dataHooks.tableListItemValue}
+            className={isAlignmentValid(align) && styles[`${align}Align`]}
+          >
             {value}
           </div>
         ))}
@@ -66,6 +78,7 @@ TableListItem.propTypes = {
     PropTypes.shape({
       value: PropTypes.node.isRequired,
       width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      align: PropTypes.oneOf(Object.keys(ALIGN)),
     }),
   ).isRequired,
   verticalPadding: PropTypes.oneOf([

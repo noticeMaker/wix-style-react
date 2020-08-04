@@ -68,25 +68,25 @@ export default {
                 <TableListItem
                   checkbox
                   options={[
-                    { value: 'Personal Finance', width: '2fr' },
-                    { value: '7 posts', width: '1fr' },
-                    { value: '27 April 2020', width: '20%' },
+                    { value: 'Personal Finance', width: '2fr', align: 'right' },
+                    { value: '7 posts', width: '1fr', align: 'center' },
+                    { value: '27 April 2020', width: '20%', align: 'left' },
                   ]}
                 />
                 <TableListItem
                   checkbox
                   options={[
-                    { value: 'Banking & Insurance', width: '2fr' },
-                    { value: '12 posts', width: '1fr' },
-                    { value: '23 April 2020', width: '20%' },
+                    { value: 'Banking & Insurance', width: '2fr', align: 'right' },
+                    { value: '12 posts', width: '1fr', align: 'center' },
+                    { value: '23 April 2020', width: '20%', align: 'left' },
                   ]}
                 />
                 <TableListItem
                   checkbox
                   options={[
-                    { value: 'Investing', width: '2fr' },
-                    { value: '4 posts', width: '1fr' },
-                    { value: '30 April 2020', width: '20%' },
+                    { value: 'Investing', width: '2fr', align: 'right' },
+                    { value: '4 posts', width: '1fr', align: 'center' },
+                    { value: '30 April 2020', width: '20%', align: 'left' },
                   ]}
                 />
               </div>`,

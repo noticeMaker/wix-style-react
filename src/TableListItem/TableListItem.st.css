@@ -23,6 +23,18 @@
   padding-bottom: 18px;
 }
 
+.leftAlign {
+  justify-self: start;
+}
+
+.centerAlign {
+  justify-self: center;
+}
+
+.rightAlign {
+  justify-self: end;
+}
+
 .checkbox {
   margin: 0 12px 0 6px;
 }

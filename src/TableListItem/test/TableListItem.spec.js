@@ -46,6 +46,24 @@ describe('TableListItem', () => {
         'grid-template-columns: 20px 30% 1fr 20px',
       );
     });
+
+    it('should align content horizontally', async () => {
+      const { driver } = render(
+        <TableListItem
+          options={[
+            { value: 'left', align: 'left' },
+            { value: 'center', align: 'center' },
+            { value: 'right', align: 'right' },
+          ]}
+        />,
+      );
+
+      expect(await driver.getOptionAt(0).attr('class')).toContain('leftAlign');
+      expect(await driver.getOptionAt(1).attr('class')).toContain(
+        'centerAlign',
+      );
+      expect(await driver.getOptionAt(2).attr('class')).toContain('rightAlign');
+    });
   });
 
   describe('verticalPadding prop', () => {
