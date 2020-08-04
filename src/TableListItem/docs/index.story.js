@@ -20,6 +20,7 @@ import allComponents from '../../../stories/utils/allComponents';
 import TableListItem from '..';
 
 import { VERTICAL_PADDING } from '../TableListItem';
+import Button from '../../Button';
 
 const example = config => baseExample({ components: allComponents, ...config });
 const code = config => baseCode({ components: allComponents, ...config });
@@ -45,7 +46,14 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${TableListItem.displayName}/`,
-      component: <TableListItem />,
+      component: (
+        <TableListItem
+          options={[
+            { value: 'TableListItem', width: '1fr' },
+            { value: <Button>Click me</Button>, width: '30%', align: 'right' },
+          ]}
+        />
+      ),
     }),
 
     tabs([
@@ -75,6 +83,7 @@ export default {
             source: `<div>
                 <TableListItem
                   checkbox
+                  draggable
                   options={[
                     { value: 'Personal Finance', width: '2fr', align: 'right' },
                     { value: '7 posts', width: '1fr', align: 'center' },
@@ -83,6 +92,8 @@ export default {
                 />
                 <TableListItem
                   checkbox
+                  draggable
+                  dragDisabled
                   options={[
                     { value: 'Banking & Insurance', width: '2fr', align: 'right' },
                     { value: '12 posts', width: '1fr', align: 'center' },
@@ -91,6 +102,7 @@ export default {
                 />
                 <TableListItem
                   checkbox
+                  draggable
                   options={[
                     { value: 'Investing', width: '2fr', align: 'right' },
                     { value: '4 posts', width: '1fr', align: 'center' },
