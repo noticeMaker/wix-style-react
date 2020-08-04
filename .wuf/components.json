@@ -408,10 +408,7 @@
     "path": "src/TableActionCell"
   },
   "TableToolbar": {
-    "path": "src/TableToolbar",
-    "missingFiles": [
-      "docs/index.story.js"
-    ]
+    "path": "src/TableToolbar"
   },
   "Tabs": {
     "path": "src/Tabs"
