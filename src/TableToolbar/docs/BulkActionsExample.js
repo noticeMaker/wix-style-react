@@ -27,15 +27,15 @@ export class BulkActionsExample extends React.Component {
 
 const BulkActionsToolbar = props => (
   <TableToolbar>
-    <ItemGroup position="start">
-      <Item>
-        <SelectedCount>{`${props.selectedCount} Selected`}</SelectedCount>
-      </Item>
-    </ItemGroup>
-    <ItemGroup position="end">
-      <Item layout="button">
+    <TableToolbar.ItemGroup position="start">
+      <TableToolbar.Item>
+        <TableToolbar.SelectedCount>{`${props.selectedCount} Selected`}</TableToolbar.SelectedCount>
+      </TableToolbar.Item>
+    </TableToolbar.ItemGroup>
+    <TableToolbar.ItemGroup position="end">
+      <TableToolbar.Item layout="button">
         <Button
-          theme="whiteblueprimary"
+          skin="light"
           prefixIcon={<Upload />}
           onClick={() =>
             window.alert(`Exporting selectedIds=${props.getSelectedIds()}`)
@@ -43,10 +43,10 @@ const BulkActionsToolbar = props => (
         >
           Export
         </Button>
-      </Item>
-      <Item layout="button">
+      </TableToolbar.Item>
+      <TableToolbar.Item layout="button">
         <Button
-          theme="whiteblueprimary"
+          skin="light"
           prefixIcon={<Duplicate />}
           onClick={() =>
             window.alert(`Duplicating selectedIds=${props.getSelectedIds()}`)
@@ -54,8 +54,8 @@ const BulkActionsToolbar = props => (
         >
           Duplicate
         </Button>
-      </Item>
-      <Item layout="button">
+      </TableToolbar.Item>
+      <TableToolbar.Item layout="button">
         <Button
           theme="whiteblueprimary"
           prefixIcon={<Edit />}
@@ -65,12 +65,12 @@ const BulkActionsToolbar = props => (
         >
           Edit
         </Button>
-      </Item>
-      <Divider />
-      <Item>
+      </TableToolbar.Item>
+      <TableToolbar.Divider />
+      <TableToolbar.Item>
         <Search expandable />
-      </Item>
-    </ItemGroup>
+      </TableToolbar.Item>
+    </TableToolbar.ItemGroup>
   </TableToolbar>
 );
 BulkActionsToolbar.propTypes = SelectionContextPropTypes;
