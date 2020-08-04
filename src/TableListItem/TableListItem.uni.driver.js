@@ -13,6 +13,8 @@ export const tableListItemDriverFactory = (base, body) => {
       base.$(`[data-hook="${dataHooks.tableListItemCheckbox}"]`),
       body,
     );
+  const getDragHandle = () =>
+    base.$(`[data-hook="${dataHooks.tableListItemDragHandle}"]`);
 
   return {
     ...baseUniDriverFactory(base, body),
@@ -22,7 +24,12 @@ export const tableListItemDriverFactory = (base, body) => {
       (await getClassList()).includes('smallVerticalPadding'),
     isVerticalPaddingMedium: async () =>
       (await getClassList()).includes('mediumVerticalPadding'),
-    doesCheckboxExist: () => getCheckboxDriver().exists(),
+    isCheckboxExist: () => getCheckboxDriver().exists(),
     checkboxDriver: getCheckboxDriver,
+    doesDragHandleExist: () => getDragHandle().exists(),
+    isDragHandleDisabled: async () => {
+      const classList = await getDragHandle().attr('class');
+      return classList.includes('dragHandleDisabled');
+    },
   };
 };

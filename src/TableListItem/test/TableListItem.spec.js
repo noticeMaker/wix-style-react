@@ -85,7 +85,7 @@ describe('TableListItem', () => {
       const { driver } = render(
         <TableListItem options={[{ value: 'Hi' }]} checkbox />,
       );
-      expect(await driver.doesCheckboxExist()).toBe(true);
+      expect(await driver.isCheckboxExist()).toBe(true);
       expect(await driver.checkboxDriver().isChecked()).toBe(false);
     });
 
@@ -107,6 +107,22 @@ describe('TableListItem', () => {
       );
       await driver.checkboxDriver().click();
       expect(stub.calledOnce).toBe(true);
+    });
+  });
+
+  describe('drag props', () => {
+    it('should show drag handle', async () => {
+      const { driver } = render(<TableListItem options={[]} draggable />);
+
+      expect(await driver.doesDragHandleExist()).toBe(true);
+    });
+
+    it('should show disabled drag handle', async () => {
+      const { driver } = render(
+        <TableListItem options={[]} draggable dragDisabled />,
+      );
+
+      expect(await driver.isDragHandleDisabled()).toBe(true);
     });
   });
 });

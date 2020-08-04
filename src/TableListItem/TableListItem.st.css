@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D80;
+  -st-named: D50, D80, B30;
 }
 
 .root {
@@ -37,4 +37,15 @@
 
 .checkbox {
   margin: 0 12px 0 6px;
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  color: value(B30);
+  margin-right: 18px;
+}
+
+.dragHandleDisabled {
+  color: value(D50);
 }

@@ -5,6 +5,8 @@ import { dataHooks } from './constants';
 import styles from './TableListItem.st.css';
 import Checkbox from '../Checkbox';
 import Box from '../Box';
+import DragHandle from 'wix-ui-icons-common/system/DragAndDropLarge';
+import DragHandleDisabled from 'wix-ui-icons-common/system/DragAndDropLockedLarge';
 
 export const VERTICAL_PADDING = {
   SMALL: 'small',
@@ -33,7 +35,10 @@ const TableListItem = ({
   checkbox,
   checked,
   onCheckboxChange,
+  draggable,
+  dragDisabled,
 }) => {
+  const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
   return (
     <Box
       className={classNames(
@@ -41,6 +46,17 @@ const TableListItem = ({
         styles[`${verticalPadding}VerticalPadding`],
       )}
     >
+      {draggable && (
+        <div
+          className={classNames(
+            styles.dragHandle,
+            dragDisabled && styles.dragHandleDisabled,
+          )}
+          data-hook={dataHooks.tableListItemDragHandle}
+        >
+          <DragHandleIcon />
+        </div>
+      )}
       {checkbox && (
         <Checkbox
           className={styles.checkbox}
@@ -88,6 +104,8 @@ TableListItem.propTypes = {
   checkbox: PropTypes.bool,
   checked: PropTypes.bool,
   onCheckboxChange: PropTypes.func,
+  draggable: PropTypes.bool,
+  dragDisabled: PropTypes.bool,
 };
 
 TableListItem.defaultProps = {
