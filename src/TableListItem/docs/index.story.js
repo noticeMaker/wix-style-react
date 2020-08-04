@@ -8,6 +8,7 @@ import {
   title,
   divider,
   example as baseExample,
+  code as baseCode,
   playground,
   api,
   testkit,
@@ -17,9 +18,11 @@ import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 
 import TableListItem from '..';
+
 import { VERTICAL_PADDING } from '../TableListItem';
 
 const example = config => baseExample({ components: allComponents, ...config });
+const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -34,11 +37,15 @@ export default {
     checkbox: true,
   },
 
-  exampleProps: {},
+  exampleProps: {
+    // Put here presets of props, for more info:
+    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
+  },
 
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${TableListItem.displayName}/`,
+      component: <TableListItem />,
     }),
 
     tabs([
@@ -61,6 +68,7 @@ export default {
             text: 'TODO',
             source: '<TableListItem options={[{value: "hello"}]} />',
           }),
+
           example({
             title: 'more advanced',
             text: 'TODO',
@@ -90,6 +98,12 @@ export default {
                   ]}
                 />
               </div>`,
+          }),
+
+          code({
+            title: 'Full Interactive Preview',
+            description: 'A non compact version of same code example as above',
+            source: '<TableListItem buttonText="Hello World!"/>',
           }),
         ],
       }),
