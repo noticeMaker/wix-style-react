@@ -46,34 +46,42 @@ describe('TableListItem', () => {
         'grid-template-columns: 20px 30% 1fr 20px',
       );
     });
+
+    it('should split space equally if width is not defined', async () => {
+      const options = [
+        { value: 'Hi' },
+        { value: 'Hello' },
+        { value: 'Dzień dobry' },
+        { value: 'Guten tag' },
+      ];
+      const { driver } = render(<TableListItem options={options} />);
+
+      expect(await driver.getStyle()).toContain(
+        'grid-template-columns: 1fr 1fr 1fr 1fr',
+      );
+    });
   });
 
   describe('checkbox props', () => {
     it('should display checkbox', async () => {
-      const { driver } = render(
-        <TableListItem options={[{ value: 'Hi' }]} checkbox />,
-      );
+      const { driver } = render(<TableListItem options={[]} checkbox />);
       expect(await driver.getCheckboxDriver().exists()).toBe(true);
       expect(await driver.getCheckboxDriver().isChecked()).toBe(false);
     });
 
     it('should display checked checkbox', async () => {
       const { driver } = render(
-        <TableListItem options={[{ value: 'Hi' }]} checkbox checked />,
+        <TableListItem options={[]} checkbox checked />,
       );
       expect(await driver.getCheckboxDriver().isChecked()).toBe(true);
     });
 
-    it('should call onCheckboxChange', async () => {
+    it('should call onCheckboxChange when clicking checkbox container', async () => {
       const stub = sinon.stub();
       const { driver } = render(
-        <TableListItem
-          options={[{ value: 'Hi' }]}
-          checkbox
-          onCheckboxChange={stub}
-        />,
+        <TableListItem options={[]} checkbox onCheckboxChange={stub} />,
       );
-      await driver.getCheckboxDriver().click();
+      await driver.clickCheckboxContainer();
       expect(stub.calledOnce).toBe(true);
     });
   });

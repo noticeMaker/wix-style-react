@@ -21,7 +21,7 @@ const ALIGN = {
 const getWidthStyle = options =>
   options.reduce(
     (acc, { width }) =>
-      `${acc} ${typeof width === 'number' ? width + 'px' : width}`,
+      `${acc} ${typeof width === 'number' ? width + 'px' : width || '1fr'}`,
     '',
   );
 
@@ -34,6 +34,7 @@ const TableListItem = ({
   options,
   verticalPadding,
   checkbox,
+  checkboxDisabled,
   checked,
   onCheckboxChange,
   draggable,
@@ -48,7 +49,7 @@ const TableListItem = ({
       {...styles(
         'root',
         {
-          hasCheckbox: checkbox,
+          draggable: draggable && !dragDisabled,
           checked: checkbox && checked,
           showDivider,
           ...{ [`${verticalPadding}VerticalPadding`]: true },
@@ -69,12 +70,17 @@ const TableListItem = ({
           </div>
         )}
         {checkbox && (
-          <Checkbox
+          <div
             className={styles.checkbox}
-            checked={checked}
-            onChange={onCheckboxChange}
-            dataHook={dataHooks.tableListItemCheckbox}
-          />
+            data-hook={dataHooks.tableListItemCheckboxContainer}
+            onClick={onCheckboxChange}
+          >
+            <Checkbox
+              checked={checked}
+              disabled={checkboxDisabled}
+              dataHook={dataHooks.tableListItemCheckbox}
+            />
+          </div>
         )}
         <Box
           className={styles.optionsContainer}
@@ -113,6 +119,7 @@ TableListItem.propTypes = {
   ).isRequired,
   verticalPadding: PropTypes.oneOf(Object.keys(VERTICAL_PADDING)),
   checkbox: PropTypes.bool,
+  checkboxDisabled: PropTypes.bool,
   checked: PropTypes.bool,
   onCheckboxChange: PropTypes.func,
   draggable: PropTypes.bool,
@@ -121,6 +128,7 @@ TableListItem.propTypes = {
 };
 
 TableListItem.defaultProps = {
+  onCheckboxChange: () => {},
   verticalPadding: VERTICAL_PADDING.small,
   checkbox: false,
   draggable: false,

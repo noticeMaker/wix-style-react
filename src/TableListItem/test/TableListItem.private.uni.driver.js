@@ -9,5 +9,9 @@ export const tableListItemPrivateDriverFactory = (base, body) => {
     ...publicDriverFactory(base, body),
 
     getStyle: () => getOptionsContainer().attr('style'),
+    clickCheckboxContainer: () =>
+      base
+        .$(`[data-hook="${dataHooks.tableListItemCheckboxContainer}"]`)
+        .click(),
   };
 };

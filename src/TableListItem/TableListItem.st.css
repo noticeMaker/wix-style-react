@@ -11,7 +11,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding, hasCheckbox;
+  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding, draggable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -40,8 +40,7 @@
   padding-bottom: value(mediumPadding);
 }
 
-.root:hasCheckbox:hover {
-  cursor: pointer;
+.root:draggable:hover {
   background-color: value(B60);
 }
 
@@ -52,6 +51,8 @@
 
 .align {
   -st-states: left, center, right;
+  margin-left: 6px;
+  margin-right: 18px;
 }
 
 .align:left {
@@ -67,7 +68,8 @@
 }
 
 .checkbox {
-  margin: 0 12px 0 6px;
+  cursor: pointer;
+  padding: 0 12px 0 6px;
 }
 
 .dragHandle {
