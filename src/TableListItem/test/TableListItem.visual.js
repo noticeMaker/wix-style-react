@@ -3,17 +3,34 @@ import { storiesOf } from '@storybook/react';
 import TableListItem from '../TableListItem';
 
 const commonProps = {
-  // use for repeated props across the tests (e.g. {buttonText: 'example'})
+  options: [
+    { value: 'Investing', width: '2fr', align: 'right' },
+    { value: '4 posts', width: '1fr', align: 'center' },
+    { value: '30 April 2020', width: '20%', align: 'left' },
+  ],
 };
 
 const tests = [
   {
-    describe: 'sanity', // prop name (e.g. size)
+    describe: 'sanity',
     its: [
       {
-        it: 'default', // prop variation (e.g. small)
+        it: 'with everything enabled',
         props: {
-          // the simulation (e.g. {size: "small"})
+          showDivider: true,
+          checkbox: true,
+          checked: true,
+          draggable: true,
+        },
+      },
+      {
+        it: 'with everything disabled',
+        props: {
+          showDivider: true,
+          checkbox: true,
+          checkboxDisabled: true,
+          draggable: true,
+          dragDisabled: true,
         },
       },
     ],
