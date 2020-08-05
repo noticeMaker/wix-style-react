@@ -92,6 +92,7 @@ export default {
                 />
                 <TableListItem
                   checkbox
+                  checked
                   draggable
                   dragDisabled
                   options={[

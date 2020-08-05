@@ -1,11 +1,27 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D50, D80, B30;
+  -st-named: B10, B30, D50, D80;
+}
+
+:vars {
+  horizontalPadding: 24px;
+  checkedBorderWidth: 2px;
+  smallPadding: 12px;
+  mediumPadding: 18px;
 }
 
 .root {
+  -st-states: checked;
   background-color: value(D80);
-  padding: 0 24px;
+  padding: 0 value(horizontalPadding);
+}
+
+.root:checked {
+  border-left-width: value(checkedBorderWidth);
+  border-left-style: solid;
+  border-left-color: value(B10);
+  padding-left: calc(value(horizontalPadding) - value(checkedBorderWidth));
+  padding-right: value(horizontalPadding);
 }
 
 .optionsContainer {
@@ -14,13 +30,13 @@
 }
 
 .smallVerticalPadding {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: value(smallPadding);
+  padding-bottom: value(smallPadding);
 }
 
 .mediumVerticalPadding {
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: value(mediumPadding);
+  padding-bottom: value(mediumPadding);
 }
 
 .leftAlign {

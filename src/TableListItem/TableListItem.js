@@ -39,51 +39,57 @@ const TableListItem = ({
   dragDisabled,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
+  const className = styles[`${verticalPadding}VerticalPadding`];
   return (
-    <Box
-      className={classNames(
-        styles.root,
-        styles[`${verticalPadding}VerticalPadding`],
+    <div
+      {...styles(
+        'root',
+        {
+          checked: checkbox && checked,
+        },
+        { className },
       )}
     >
-      {draggable && (
-        <div
-          className={classNames(
-            styles.dragHandle,
-            dragDisabled && styles.dragHandleDisabled,
-          )}
-          data-hook={dataHooks.tableListItemDragHandle}
-        >
-          <DragHandleIcon />
-        </div>
-      )}
-      {checkbox && (
-        <Checkbox
-          className={styles.checkbox}
-          checked={checked}
-          onChange={onCheckboxChange}
-          dataHook={dataHooks.tableListItemCheckbox}
-        />
-      )}
-      <Box
-        className={styles.optionsContainer}
-        style={{
-          gridTemplateColumns: getWidthStyle(options),
-        }}
-        verticalAlign="middle"
-        dataHook={dataHooks.tableListItemOptionsContainer}
-      >
-        {options.map(({ value, align }, index) => (
+      <Box>
+        {draggable && (
           <div
-            key={index}
-            data-hook={dataHooks.tableListItemValue}
-            className={isAlignmentValid(align) && styles[`${align}Align`]}
+            className={classNames(
+              styles.dragHandle,
+              dragDisabled && styles.dragHandleDisabled,
+            )}
+            data-hook={dataHooks.tableListItemDragHandle}
           >
-            {value}
+            <DragHandleIcon />
           </div>
-        ))}
+        )}
+        {checkbox && (
+          <Checkbox
+            className={styles.checkbox}
+            checked={checked}
+            onChange={onCheckboxChange}
+            dataHook={dataHooks.tableListItemCheckbox}
+          />
+        )}
+        <Box
+          className={styles.optionsContainer}
+          style={{
+            gridTemplateColumns: getWidthStyle(options),
+          }}
+          verticalAlign="middle"
+          dataHook={dataHooks.tableListItemOptionsContainer}
+        >
+          {options.map(({ value, align }, index) => (
+            <div
+              key={index}
+              data-hook={dataHooks.tableListItemValue}
+              className={isAlignmentValid(align) && styles[`${align}Align`]}
+            >
+              {value}
+            </div>
+          ))}
+        </Box>
       </Box>
-    </Box>
+    </div>
   );
 };
 
