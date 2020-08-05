@@ -4,11 +4,11 @@ import {
   createRendererWithUniDriver,
   cleanup,
 } from '../../../test/utils/react/index';
-import { tableListItemDriverFactory } from '../TableListItem.uni.driver';
+import { tableListItemPrivateDriverFactory } from './TableListItem.private.uni.driver';
 import TableListItem from '../index';
 
 describe('TableListItem', () => {
-  const render = createRendererWithUniDriver(tableListItemDriverFactory);
+  const render = createRendererWithUniDriver(tableListItemPrivateDriverFactory);
 
   afterEach(cleanup);
 
@@ -53,7 +53,7 @@ describe('TableListItem', () => {
       const { driver } = render(
         <TableListItem options={[{ value: 'Hi' }]} checkbox />,
       );
-      expect(await driver.isCheckboxExist()).toBe(true);
+      expect(await driver.checkboxDriver().exists()).toBe(true);
       expect(await driver.checkboxDriver().isChecked()).toBe(false);
     });
 
@@ -82,7 +82,7 @@ describe('TableListItem', () => {
     it('should show drag handle', async () => {
       const { driver } = render(<TableListItem options={[]} draggable />);
 
-      expect(await driver.doesDragHandleExist()).toBe(true);
+      expect(await driver.isDragHandleExists()).toBe(true);
     });
   });
 });
