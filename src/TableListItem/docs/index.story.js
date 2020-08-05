@@ -49,7 +49,7 @@ export default {
       component: (
         <TableListItem
           options={[
-            { value: 'TableListItem', width: '1fr' },
+            { value: 'TableListItem' },
             { value: <Button>Click me</Button>, width: '30%', align: 'right' },
           ]}
         />
@@ -62,7 +62,8 @@ export default {
         sections: [
           description({
             title: 'Description',
-            text: 'TableListItem component is used to TODO.',
+            text:
+              'List item is a container used to organise and display data efficiently. It can contain any kind of content. It supports drag & drop functionality and nested layout when wrapped into Sortable List (can be parent or child item). Use it to replicate table layout in primary content, such as cards.',
           }),
 
           importExample(),
@@ -73,13 +74,6 @@ export default {
 
           example({
             title: 'Simple Usage',
-            text: 'TODO',
-            source: '<TableListItem options={[{value: "hello"}]} />',
-          }),
-
-          example({
-            title: 'more advanced',
-            text: 'TODO',
             source: `<div>
                 <TableListItem
                   showDivider
@@ -104,12 +98,22 @@ export default {
                   ]}
                 />
                 <TableListItem
+                  showDivider
                   checkbox
                   draggable
                   options={[
                     { value: 'Investing', width: '2fr', align: 'right' },
                     { value: '4 posts', width: '1fr', align: 'center' },
                     { value: '30 April 2020', width: '20%', align: 'left' },
+                  ]}
+                />
+                <TableListItem
+                  checkbox
+                  draggable
+                  options={[
+                    { value: 'Investing', align: 'right' },
+                    { value: '4 posts', align: 'center', width: '80px' },
+                    { value: '30 April 2020', align: 'left' },
                   ]}
                 />
               </div>`,
@@ -120,6 +124,7 @@ export default {
             description: 'A non compact version of same code example as above',
             source: `<div>
                 <TableListItem
+                  showDivider
                   checkbox
                   draggable
                   options={[
@@ -129,6 +134,7 @@ export default {
                   ]}
                 />
                 <TableListItem
+                  showDivider
                   checkbox
                   checked
                   draggable
@@ -140,12 +146,22 @@ export default {
                   ]}
                 />
                 <TableListItem
+                  showDivider
                   checkbox
                   draggable
                   options={[
                     { value: 'Investing', width: '2fr', align: 'right' },
                     { value: '4 posts', width: '1fr', align: 'center' },
                     { value: '30 April 2020', width: '20%', align: 'left' },
+                  ]}
+                />
+                <TableListItem
+                  checkbox
+                  draggable
+                  options={[
+                    { value: 'Investing', align: 'right' },
+                    { value: '4 posts', align: 'center', width: '80px' },
+                    { value: '30 April 2020', align: 'left' },
                   ]}
                 />
               </div>`,

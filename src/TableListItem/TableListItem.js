@@ -110,6 +110,10 @@ TableListItem.displayName = 'TableListItem';
 TableListItem.propTypes = {
   dataHook: PropTypes.string,
   className: PropTypes.string,
+
+  /**
+   width supports px/%/fr
+   */
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.node.isRequired,
@@ -117,13 +121,45 @@ TableListItem.propTypes = {
       align: PropTypes.oneOf(Object.keys(ALIGN)),
     }),
   ).isRequired,
+
+  /**
+    Extra space on top and bottom of list item
+   */
   verticalPadding: PropTypes.oneOf(Object.keys(VERTICAL_PADDING)),
+
+  /**
+    Show checkbox
+   */
   checkbox: PropTypes.bool,
+
+  /**
+    Disable checkbox
+   */
   checkboxDisabled: PropTypes.bool,
+
+  /**
+    State of the checkbox
+   */
   checked: PropTypes.bool,
+
+  /**
+    Called when checkbox is clicked
+   */
   onCheckboxChange: PropTypes.func,
+
+  /**
+    Show drag handle
+   */
   draggable: PropTypes.bool,
+
+  /**
+    Show disabled drag handle
+   */
   dragDisabled: PropTypes.bool,
+
+  /**
+    Show divider on the bottom of the list item
+   */
   showDivider: PropTypes.bool,
 };
 
