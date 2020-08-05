@@ -7,7 +7,7 @@ import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
 function tableListItemWithMandatoryProps() {
-  return <TableListItem />;
+  return <TableListItem options={[]} />;
 }
 
 function tableListItemWithAllProps() {
@@ -15,7 +15,19 @@ function tableListItemWithAllProps() {
     <TableListItem
       dataHook="dataHook"
       className="className"
-      buttonText="buttonText"
+      options={[
+        { value: 'Banking & Insurance', width: '2fr', align: 'right' },
+        { value: '12 posts', width: '1fr', align: 'center' },
+        { value: '23 April 2020', width: '20%', align: 'left' },
+      ]}
+      verticalPadding="medium"
+      checkbox
+      checkboxDisabled
+      checked
+      onCheckboxChange={() => {}}
+      draggable
+      dragDisabled
+      showDivider
     />
   );
 }

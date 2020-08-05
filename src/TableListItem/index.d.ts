@@ -12,6 +12,7 @@ export interface TableListItemProps {
   options: TableListItemColumn[];
   verticalPadding?: 'small' | 'medium';
   checkbox?: boolean;
+  checkboxDisabled?: boolean;
   checked?: boolean;
   onCheckboxChange?: React.ChangeEventHandler<HTMLInputElement>;
   draggable?: boolean;
