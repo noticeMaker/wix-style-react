@@ -53,15 +53,15 @@ describe('TableListItem', () => {
       const { driver } = render(
         <TableListItem options={[{ value: 'Hi' }]} checkbox />,
       );
-      expect(await driver.checkboxDriver().exists()).toBe(true);
-      expect(await driver.checkboxDriver().isChecked()).toBe(false);
+      expect(await driver.getCheckboxDriver().exists()).toBe(true);
+      expect(await driver.getCheckboxDriver().isChecked()).toBe(false);
     });
 
     it('should display checked checkbox', async () => {
       const { driver } = render(
         <TableListItem options={[{ value: 'Hi' }]} checkbox checked />,
       );
-      expect(await driver.checkboxDriver().isChecked()).toBe(true);
+      expect(await driver.getCheckboxDriver().isChecked()).toBe(true);
     });
 
     it('should call onCheckboxChange', async () => {
@@ -73,7 +73,7 @@ describe('TableListItem', () => {
           onCheckboxChange={stub}
         />,
       );
-      await driver.checkboxDriver().click();
+      await driver.getCheckboxDriver().click();
       expect(stub.calledOnce).toBe(true);
     });
   });

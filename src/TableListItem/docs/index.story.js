@@ -34,7 +34,7 @@ export default {
 
   componentProps: {
     options: [{ value: 'hello', width: 42 }],
-    verticalPadding: VERTICAL_PADDING.SMALL,
+    verticalPadding: VERTICAL_PADDING.small,
     checkbox: true,
   },
 

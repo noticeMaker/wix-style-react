@@ -1,7 +1,8 @@
 import { BaseUniDriver } from 'wix-ui-test-utils/unidriver';
+import { CheckboxUniDriver } from '../Checkbox/Checkbox.uni.driver';
 
 export interface TableListItemUniDriver extends BaseUniDriver {
-  getCountText(): Promise<string>;
-  clickButton(): Promise<void>;
-  getButtonText(): Promise<string>;
+  getOptionAt(): Promise<BaseUniDriver>;
+  getCheckboxDriver(): CheckboxUniDriver;
+  isDragHandleExists(): Promise<boolean>;
 }

@@ -8,8 +8,8 @@ import DragHandle from 'wix-ui-icons-common/system/DragAndDropLarge';
 import DragHandleDisabled from 'wix-ui-icons-common/system/DragAndDropLockedLarge';
 
 export const VERTICAL_PADDING = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
+  small: 'small',
+  medium: 'medium',
 };
 
 const ALIGN = {
@@ -39,15 +39,22 @@ const TableListItem = ({
   draggable,
   dragDisabled,
   showDivider,
+  className,
+  dataHook,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
   return (
     <div
-      {...styles('root', {
-        checked: checkbox && checked,
-        showDivider,
-        ...{ [`${verticalPadding}VerticalPadding`]: true },
-      })}
+      {...styles(
+        'root',
+        {
+          checked: checkbox && checked,
+          showDivider,
+          ...{ [`${verticalPadding}VerticalPadding`]: true },
+        },
+        { className },
+      )}
+      data-hook={dataHook}
     >
       <Box>
         {draggable && (
@@ -94,6 +101,8 @@ const TableListItem = ({
 TableListItem.displayName = 'TableListItem';
 
 TableListItem.propTypes = {
+  dataHook: PropTypes.string,
+  className: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.node.isRequired,
@@ -101,10 +110,7 @@ TableListItem.propTypes = {
       align: PropTypes.oneOf(Object.keys(ALIGN)),
     }),
   ).isRequired,
-  verticalPadding: PropTypes.oneOf([
-    VERTICAL_PADDING.SMALL,
-    VERTICAL_PADDING.MEDIUM,
-  ]),
+  verticalPadding: PropTypes.oneOf(Object.keys(VERTICAL_PADDING)),
   checkbox: PropTypes.bool,
   checked: PropTypes.bool,
   onCheckboxChange: PropTypes.func,
@@ -114,7 +120,7 @@ TableListItem.propTypes = {
 };
 
 TableListItem.defaultProps = {
-  verticalPadding: VERTICAL_PADDING.SMALL,
+  verticalPadding: VERTICAL_PADDING.small,
   checkbox: false,
   draggable: false,
   showDivider: false,
