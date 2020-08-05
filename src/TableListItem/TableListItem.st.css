@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: B10, B30, D50, D80;
+  -st-named: B10, B30, D50, D60, D80;
 }
 
 :vars {
@@ -11,7 +11,7 @@
 }
 
 .root {
-  -st-states: checked;
+  -st-states: checked, showDivider;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -22,6 +22,12 @@
   border-left-color: value(B10);
   padding-left: calc(value(horizontalPadding) - value(checkedBorderWidth));
   padding-right: value(horizontalPadding);
+}
+
+.root:showDivider {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: value(D60);
 }
 
 .optionsContainer {

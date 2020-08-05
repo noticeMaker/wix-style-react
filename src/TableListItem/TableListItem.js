@@ -37,6 +37,7 @@ const TableListItem = ({
   onCheckboxChange,
   draggable,
   dragDisabled,
+  showDivider,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
   const className = styles[`${verticalPadding}VerticalPadding`];
@@ -46,6 +47,7 @@ const TableListItem = ({
         'root',
         {
           checked: checkbox && checked,
+          showDivider,
         },
         { className },
       )}
@@ -112,10 +114,14 @@ TableListItem.propTypes = {
   onCheckboxChange: PropTypes.func,
   draggable: PropTypes.bool,
   dragDisabled: PropTypes.bool,
+  showDivider: PropTypes.bool,
 };
 
 TableListItem.defaultProps = {
   verticalPadding: VERTICAL_PADDING.SMALL,
+  checkbox: false,
+  draggable: false,
+  showDivider: false,
 };
 
 export default TableListItem;

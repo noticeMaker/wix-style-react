@@ -82,6 +82,44 @@ export default {
             text: 'TODO',
             source: `<div>
                 <TableListItem
+                  showDivider
+                  checkbox
+                  draggable
+                  options={[
+                    { value: 'Personal Finance', width: '2fr', align: 'right' },
+                    { value: '7 posts', width: '1fr', align: 'center' },
+                    { value: '27 April 2020', width: '20%', align: 'left' },
+                  ]}
+                />
+                <TableListItem
+                  showDivider
+                  checkbox
+                  checked
+                  draggable
+                  dragDisabled
+                  options={[
+                    { value: 'Banking & Insurance', width: '2fr', align: 'right' },
+                    { value: '12 posts', width: '1fr', align: 'center' },
+                    { value: '23 April 2020', width: '20%', align: 'left' },
+                  ]}
+                />
+                <TableListItem
+                  checkbox
+                  draggable
+                  options={[
+                    { value: 'Investing', width: '2fr', align: 'right' },
+                    { value: '4 posts', width: '1fr', align: 'center' },
+                    { value: '30 April 2020', width: '20%', align: 'left' },
+                  ]}
+                />
+              </div>`,
+          }),
+
+          code({
+            title: 'Full Interactive Preview',
+            description: 'A non compact version of same code example as above',
+            source: `<div>
+                <TableListItem
                   checkbox
                   draggable
                   options={[
@@ -111,12 +149,6 @@ export default {
                   ]}
                 />
               </div>`,
-          }),
-
-          code({
-            title: 'Full Interactive Preview',
-            description: 'A non compact version of same code example as above',
-            source: '<TableListItem buttonText="Hello World!"/>',
           }),
         ],
       }),
