@@ -11,7 +11,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider;
+  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -30,30 +30,34 @@
   border-bottom-color: value(D60);
 }
 
+.root:smallVerticalPadding {
+  padding-top: value(smallPadding);
+  padding-bottom: value(smallPadding);
+}
+
+.root:mediumVerticalPadding {
+  padding-top: value(mediumPadding);
+  padding-bottom: value(mediumPadding);
+}
+
 .optionsContainer {
   display: grid;
   width: 100%;
 }
 
-.smallVerticalPadding {
-  padding-top: value(smallPadding);
-  padding-bottom: value(smallPadding);
+.align {
+  -st-states: left, center, right;
 }
 
-.mediumVerticalPadding {
-  padding-top: value(mediumPadding);
-  padding-bottom: value(mediumPadding);
-}
-
-.leftAlign {
+.align:left {
   justify-self: start;
 }
 
-.centerAlign {
+.align:center {
   justify-self: center;
 }
 
-.rightAlign {
+.align:right {
   justify-self: end;
 }
 
@@ -62,12 +66,13 @@
 }
 
 .dragHandle {
+  -st-states: disabled;
   display: flex;
   align-items: center;
   color: value(B30);
   margin-right: 18px;
 }
 
-.dragHandleDisabled {
+.dragHandle:disabled {
   color: value(D50);
 }

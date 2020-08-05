@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { dataHooks } from './constants';
 import styles from './TableListItem.st.css';
 import Checkbox from '../Checkbox';
@@ -26,7 +25,9 @@ const getWidthStyle = options =>
     '',
   );
 
-const isAlignmentValid = align => align && Object.keys(ALIGN).includes(align);
+const getAlignment = alignment => ({
+  [ALIGN[alignment] || ALIGN.left]: true,
+});
 
 /** TableListItem */
 const TableListItem = ({
@@ -40,25 +41,20 @@ const TableListItem = ({
   showDivider,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
-  const className = styles[`${verticalPadding}VerticalPadding`];
   return (
     <div
-      {...styles(
-        'root',
-        {
-          checked: checkbox && checked,
-          showDivider,
-        },
-        { className },
-      )}
+      {...styles('root', {
+        checked: checkbox && checked,
+        showDivider,
+        ...{ [`${verticalPadding}VerticalPadding`]: true },
+      })}
     >
       <Box>
         {draggable && (
           <div
-            className={classNames(
-              styles.dragHandle,
-              dragDisabled && styles.dragHandleDisabled,
-            )}
+            {...styles(styles.dragHandle, {
+              disabled: dragDisabled,
+            })}
             data-hook={dataHooks.tableListItemDragHandle}
           >
             <DragHandleIcon />
@@ -82,9 +78,9 @@ const TableListItem = ({
         >
           {options.map(({ value, align }, index) => (
             <div
+              {...styles(styles.align, getAlignment(align))}
               key={index}
               data-hook={dataHooks.tableListItemValue}
-              className={isAlignmentValid(align) && styles[`${align}Align`]}
             >
               {value}
             </div>

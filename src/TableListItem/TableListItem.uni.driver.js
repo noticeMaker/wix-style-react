@@ -7,7 +7,6 @@ export const tableListItemDriverFactory = (base, body) => {
     base.$$(`[data-hook="${dataHooks.tableListItemValue}"]`).get(index);
   const getOptionsContainer = () =>
     base.$(`[data-hook="${dataHooks.tableListItemOptionsContainer}"]`);
-  const getClassList = () => base.attr('class');
   const getCheckboxDriver = () =>
     checkboxUniDriverFactory(
       base.$(`[data-hook="${dataHooks.tableListItemCheckbox}"]`),
@@ -20,16 +19,8 @@ export const tableListItemDriverFactory = (base, body) => {
     ...baseUniDriverFactory(base, body),
     getOptionAt,
     getStyle: () => getOptionsContainer().attr('style'),
-    isVerticalPaddingSmall: async () =>
-      (await getClassList()).includes('smallVerticalPadding'),
-    isVerticalPaddingMedium: async () =>
-      (await getClassList()).includes('mediumVerticalPadding'),
     isCheckboxExist: () => getCheckboxDriver().exists(),
     checkboxDriver: getCheckboxDriver,
     doesDragHandleExist: () => getDragHandle().exists(),
-    isDragHandleDisabled: async () => {
-      const classList = await getDragHandle().attr('class');
-      return classList.includes('dragHandleDisabled');
-    },
   };
 };

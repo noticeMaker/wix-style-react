@@ -46,38 +46,6 @@ describe('TableListItem', () => {
         'grid-template-columns: 20px 30% 1fr 20px',
       );
     });
-
-    it('should align content horizontally', async () => {
-      const { driver } = render(
-        <TableListItem
-          options={[
-            { value: 'left', align: 'left' },
-            { value: 'center', align: 'center' },
-            { value: 'right', align: 'right' },
-          ]}
-        />,
-      );
-
-      expect(await driver.getOptionAt(0).attr('class')).toContain('leftAlign');
-      expect(await driver.getOptionAt(1).attr('class')).toContain(
-        'centerAlign',
-      );
-      expect(await driver.getOptionAt(2).attr('class')).toContain('rightAlign');
-    });
-  });
-
-  describe('verticalPadding prop', () => {
-    it('should render small item', async () => {
-      const { driver } = render(<TableListItem options={[{ value: 'Hi' }]} />);
-      expect(await driver.isVerticalPaddingSmall()).toBe(true);
-    });
-
-    it('should render medium item', async () => {
-      const { driver } = render(
-        <TableListItem options={[{ value: 'Hi' }]} verticalPadding="medium" />,
-      );
-      expect(await driver.isVerticalPaddingMedium()).toBe(true);
-    });
   });
 
   describe('checkbox props', () => {
@@ -115,14 +83,6 @@ describe('TableListItem', () => {
       const { driver } = render(<TableListItem options={[]} draggable />);
 
       expect(await driver.doesDragHandleExist()).toBe(true);
-    });
-
-    it('should show disabled drag handle', async () => {
-      const { driver } = render(
-        <TableListItem options={[]} draggable dragDisabled />,
-      );
-
-      expect(await driver.isDragHandleDisabled()).toBe(true);
     });
   });
 });
