@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: B10, B30, D50, D60, D80;
+  -st-named: B10, B30, B60, D50, D60, D80;
 }
 
 :vars {
@@ -11,7 +11,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding;
+  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding, hasCheckbox;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -38,6 +38,11 @@
 .root:mediumVerticalPadding {
   padding-top: value(mediumPadding);
   padding-bottom: value(mediumPadding);
+}
+
+.root:hasCheckbox:hover {
+  cursor: pointer;
+  background-color: value(B60);
 }
 
 .optionsContainer {

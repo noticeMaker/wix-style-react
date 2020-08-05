@@ -48,6 +48,7 @@ const TableListItem = ({
       {...styles(
         'root',
         {
+          hasCheckbox: checkbox,
           checked: checkbox && checked,
           showDivider,
           ...{ [`${verticalPadding}VerticalPadding`]: true },
