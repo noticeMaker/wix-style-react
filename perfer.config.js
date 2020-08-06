@@ -127,6 +127,7 @@ const javascriptFiles = [
   ['Swatches.bundle.min.js', 86],
   ['Table.bundle.min.js', 68],
   ['TableActionCell.bundle.min.js', 62],
+  ['TableListItem.bundle.min.js', 40],
   ['TableToolbar.bundle.min.js', 38],
   ['Tabs.bundle.min.js', 42],
   ['Tag.bundle.min.js', 39],
@@ -145,7 +146,6 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 38],
   ['VerticalTabsItem.bundle.min.js', 38],
   ['WarningIndicator.bundle.min.js', 40],
-  ['TableListItem.bundle.min.js', 40],
 ];
 
 const cssFiles = [
@@ -244,6 +244,7 @@ const cssFiles = [
   ['Swatches.min.css', 7],
   ['Table.min.css', 3],
   ['TableActionCell.min.css', 6],
+  ['TableListItem.min.css', 1],
   ['TableToolbar.min.css', 1],
   ['Tabs.min.css', 2],
   ['Tag.min.css', 2],
@@ -255,7 +256,6 @@ const cssFiles = [
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
-  ['TableListItem.min.css', 1],
 ];
 
 const getJS = () =>
