@@ -13,5 +13,7 @@ export const tableListItemPrivateDriverFactory = (base, body) => {
       base
         .$(`[data-hook="${dataHooks.tableListItemCheckboxContainer}"]`)
         .click(),
+    isDragHandleExists: () =>
+      base.$(`[data-hook="${dataHooks.tableListItemDragHandle}"]`).exists(),
   };
 };

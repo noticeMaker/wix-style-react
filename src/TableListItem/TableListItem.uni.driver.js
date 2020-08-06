@@ -3,19 +3,31 @@ import { dataHooks } from './constants';
 import { checkboxUniDriverFactory } from '../Checkbox/Checkbox.uni.driver';
 
 export const tableListItemDriverFactory = (base, body) => {
-  const getOptionAt = index =>
+  const getColumnAt = index =>
     base.$$(`[data-hook="${dataHooks.tableListItemValue}"]`).get(index);
-  const getDragHandle = () =>
-    base.$(`[data-hook="${dataHooks.tableListItemDragHandle}"]`);
+  const getCheckboxDriver = () =>
+    checkboxUniDriverFactory(
+      base.$(`[data-hook="${dataHooks.tableListItemCheckbox}"]`),
+      body,
+    );
 
   return {
     ...baseUniDriverFactory(base, body),
-    getOptionAt,
-    getCheckboxDriver: () =>
-      checkboxUniDriverFactory(
-        base.$(`[data-hook="${dataHooks.tableListItemCheckbox}"]`),
-        body,
-      ),
-    isDragHandleExists: () => getDragHandle().exists(),
+    getColumTextAt: async index => {
+      const column = await getColumnAt(index);
+      return column.text();
+    },
+    isCheckboxExists: () => {
+      const driver = getCheckboxDriver();
+      return driver.exists();
+    },
+    isCheckboxChecked: () => {
+      const driver = getCheckboxDriver();
+      return driver.isChecked();
+    },
+    toggleCheckbox: () => {
+      const driver = getCheckboxDriver();
+      driver.click();
+    },
   };
 };

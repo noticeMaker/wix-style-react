@@ -29,8 +29,8 @@ describe('TableListItem', () => {
         />,
       );
 
-      expect(await driver.getOptionAt(0).text()).toContain(values[0]);
-      expect(await driver.getOptionAt(1).text()).toContain(values[1]);
+      expect(await driver.getColumTextAt(0)).toContain(values[0]);
+      expect(await driver.getColumTextAt(1)).toContain(values[1]);
     });
 
     it('should display px, fr and % types correctly', async () => {
@@ -65,15 +65,15 @@ describe('TableListItem', () => {
   describe('checkbox props', () => {
     it('should display checkbox', async () => {
       const { driver } = render(<TableListItem options={[]} checkbox />);
-      expect(await driver.getCheckboxDriver().exists()).toBe(true);
-      expect(await driver.getCheckboxDriver().isChecked()).toBe(false);
+      expect(await driver.isCheckboxExists()).toBe(true);
+      expect(await driver.isCheckboxChecked()).toBe(false);
     });
 
     it('should display checked checkbox', async () => {
       const { driver } = render(
         <TableListItem options={[]} checkbox checked />,
       );
-      expect(await driver.getCheckboxDriver().isChecked()).toBe(true);
+      expect(await driver.isCheckboxChecked()).toBe(true);
     });
 
     it('should call onCheckboxChange when clicking checkbox container', async () => {
