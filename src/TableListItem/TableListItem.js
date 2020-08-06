@@ -48,7 +48,7 @@ const TableListItem = ({
           draggable: draggable && !dragDisabled,
           checked: checkbox && checked,
           showDivider,
-          ...{ [`${verticalPadding}VerticalPadding`]: true },
+          ...{ verticalPadding },
         },
         { className },
       )}
