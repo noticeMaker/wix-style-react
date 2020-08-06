@@ -25,10 +25,6 @@ const getWidthStyle = options =>
     '',
   );
 
-const getAlignment = alignment => ({
-  [ALIGN[alignment] || ALIGN.left]: true,
-});
-
 /** TableListItem */
 const TableListItem = ({
   options,
@@ -61,7 +57,7 @@ const TableListItem = ({
       <Box>
         {draggable && (
           <div
-            {...styles(styles.dragHandle, {
+            {...styles('dragHandle', {
               disabled: dragDisabled,
             })}
             data-hook={dataHooks.tableListItemDragHandle}
@@ -92,7 +88,7 @@ const TableListItem = ({
         >
           {options.map(({ value, align }, index) => (
             <div
-              {...styles(styles.align, getAlignment(align))}
+              {...styles('align', { position: ALIGN[align] || ALIGN.left })}
               key={index}
               data-hook={dataHooks.tableListItemValue}
             >

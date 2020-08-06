@@ -11,7 +11,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider, smallVerticalPadding, mediumVerticalPadding, draggable;
+  -st-states: checked, showDivider, verticalPadding(enum(small, medium)), draggable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -30,12 +30,12 @@
   border-bottom-color: value(D60);
 }
 
-.root:smallVerticalPadding {
+.root:verticalPadding(small) {
   padding-top: value(smallPadding);
   padding-bottom: value(smallPadding);
 }
 
-.root:mediumVerticalPadding {
+.root:verticalPadding(medium) {
   padding-top: value(mediumPadding);
   padding-bottom: value(mediumPadding);
 }
@@ -50,20 +50,20 @@
 }
 
 .align {
-  -st-states: left, center, right;
+  -st-states: position(enum(left, center, right));
   margin-left: 6px;
   margin-right: 18px;
 }
 
-.align:left {
+.align:position(left) {
   justify-self: start;
 }
 
-.align:center {
+.align:position(center) {
   justify-self: center;
 }
 
-.align:right {
+.align:position(right) {
   justify-self: end;
 }
 
