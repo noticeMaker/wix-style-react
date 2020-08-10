@@ -8,11 +8,19 @@ import {
   title,
   divider,
   example as baseExample,
-  code as baseCode,
   playground,
   api,
   testkit,
 } from 'wix-storybook-utils/Sections';
+
+import StructureExampleRaw from '!raw-loader!./examples/StructureExample';
+import ColumnsExampleRaw from '!raw-loader!./examples/ColumnsExample';
+import ColumnAlignmentExampleRaw from '!raw-loader!./examples/ColumnAlignmentExample';
+import PaddingExampleRaw from '!raw-loader!./examples/PaddingExample';
+import SelectionExampleRaw from '!raw-loader!./examples/SelectionExample';
+import DraggableExampleRaw from '!raw-loader!./examples/DraggableExample';
+import DividerExampleRaw from '!raw-loader!./examples/DividerExample';
+import TableActionCellExampleRaw from '!raw-loader!./examples/TableActionCellExample';
 
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
@@ -23,7 +31,6 @@ import { VERTICAL_PADDING } from '../TableListItem';
 import Button from '../../Button';
 
 const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -73,98 +80,57 @@ export default {
           title('Examples'),
 
           example({
-            title: 'Simple Usage',
-            source: `<div>
-                <TableListItem
-                  showDivider
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Personal Finance', width: '2fr', align: 'right' },
-                    { value: '7 posts', width: '1fr', align: 'center' },
-                    { value: '27 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  showDivider
-                  checkbox
-                  checked
-                  draggable
-                  dragDisabled
-                  options={[
-                    { value: 'Banking & Insurance', width: '2fr', align: 'right' },
-                    { value: '12 posts', width: '1fr', align: 'center' },
-                    { value: '23 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  showDivider
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Investing', width: '2fr', align: 'right' },
-                    { value: '4 posts', width: '1fr', align: 'center' },
-                    { value: '30 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Investing', align: 'right' },
-                    { value: '4 posts', align: 'center', width: '80px' },
-                    { value: '30 April 2020', align: 'left' },
-                  ]}
-                />
-              </div>`,
+            title: 'Structure',
+            description:
+              'Component consists of a drag grip, checkbox and content area.',
+            source: StructureExampleRaw,
           }),
 
-          code({
-            title: 'Full Interactive Preview',
-            description: 'A non compact version of same code example as above',
-            source: `<div>
-                <TableListItem
-                  showDivider
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Personal Finance', width: '2fr', align: 'right' },
-                    { value: '7 posts', width: '1fr', align: 'center' },
-                    { value: '27 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  showDivider
-                  checkbox
-                  checked
-                  draggable
-                  dragDisabled
-                  options={[
-                    { value: 'Banking & Insurance', width: '2fr', align: 'right' },
-                    { value: '12 posts', width: '1fr', align: 'center' },
-                    { value: '23 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  showDivider
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Investing', width: '2fr', align: 'right' },
-                    { value: '4 posts', width: '1fr', align: 'center' },
-                    { value: '30 April 2020', width: '20%', align: 'left' },
-                  ]}
-                />
-                <TableListItem
-                  checkbox
-                  draggable
-                  options={[
-                    { value: 'Investing', align: 'right' },
-                    { value: '4 posts', align: 'center', width: '80px' },
-                    { value: '30 April 2020', align: 'left' },
-                  ]}
-                />
-              </div>`,
+          example({
+            title: 'Columns',
+            description:
+              'Component content allows to have any number of data columns, which width can be specified either in % or pixels.',
+            source: ColumnsExampleRaw,
+          }),
+
+          example({
+            title: 'Column Alignment',
+            description:
+              'Content within column can be aligned to the left, center or right',
+            source: ColumnAlignmentExampleRaw,
+          }),
+
+          example({
+            title: 'Padding',
+            description:
+              'There are two densities: small and medium. Default is medium.',
+            source: PaddingExampleRaw,
+          }),
+
+          example({
+            title: 'Selection',
+            description: 'Selection checkbox can be enabled or hidden.',
+            source: SelectionExampleRaw,
+          }),
+
+          example({
+            title: 'Draggable',
+            description: 'Drag grip can be enabled or restricted.',
+            source: DraggableExampleRaw,
+          }),
+
+          example({
+            title: 'Divider',
+            description:
+              'Item has a bottom divider. The last item in the list should hide it.',
+            source: DividerExampleRaw,
+          }),
+
+          example({
+            title: 'Using with TableActionCell',
+            description:
+              'Component allows to add TableActionCell to the last data column and make the whole item clickable.',
+            source: TableActionCellExampleRaw,
           }),
         ],
       }),
