@@ -86,11 +86,17 @@ describe('TableListItem', () => {
     });
   });
 
-  describe('drag props', () => {
-    it('should show drag handle', async () => {
-      const { driver } = render(<TableListItem options={[]} draggable />);
+  it('should show drag handle', async () => {
+    const { driver } = render(<TableListItem options={[]} draggable />);
 
-      expect(await driver.isDragHandleExists()).toBe(true);
-    });
+    expect(await driver.isDragHandleExists()).toBe(true);
+  });
+
+  it('should call onClick clicked', async () => {
+    const stub = sinon.stub();
+    const { driver } = render(<TableListItem options={[]} onClick={stub} />);
+
+    await driver.click();
+    expect(stub.calledWith()).toBe(true);
   });
 });

@@ -9,6 +9,7 @@ export type TableListItemColumn = {
 export interface TableListItemProps {
   dataHook?: string;
   className?: string;
+  onClick?: Function;
   options: TableListItemColumn[];
   verticalPadding?: 'small' | 'medium';
   checkbox?: boolean;

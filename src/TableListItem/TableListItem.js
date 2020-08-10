@@ -36,18 +36,21 @@ const TableListItem = ({
   draggable,
   dragDisabled,
   showDivider,
+  onClick,
   className,
   dataHook,
 }) => {
   const DragHandleIcon = dragDisabled ? DragHandleDisabled : DragHandle;
   return (
     <div
+      onClick={onClick}
       {...styles(
         'root',
         {
           draggable: draggable && !dragDisabled,
           checked: checkbox && checked,
           showDivider,
+          clickable: !!onClick,
           ...{ verticalPadding },
         },
         { className },
@@ -114,14 +117,17 @@ TableListItem.propTypes = {
     PropTypes.shape({
       value: PropTypes.node.isRequired,
       width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      align: PropTypes.oneOf(Object.keys(ALIGN)),
+      align: PropTypes.oneOf([ALIGN.left, ALIGN.center, ALIGN.right]),
     }),
   ).isRequired,
 
   /**
     Extra space on top and bottom of list item
    */
-  verticalPadding: PropTypes.oneOf(Object.keys(VERTICAL_PADDING)),
+  verticalPadding: PropTypes.oneOf([
+    VERTICAL_PADDING.medium,
+    VERTICAL_PADDING.small,
+  ]),
 
   /**
     Show checkbox
@@ -157,11 +163,16 @@ TableListItem.propTypes = {
     Show divider on the bottom of the list item
    */
   showDivider: PropTypes.bool,
+
+  /**
+    Called when the item is clicked
+   */
+  onClick: PropTypes.func,
 };
 
 TableListItem.defaultProps = {
   onCheckboxChange: () => {},
-  verticalPadding: VERTICAL_PADDING.small,
+  verticalPadding: VERTICAL_PADDING.medium,
   checkbox: false,
   draggable: false,
   showDivider: false,

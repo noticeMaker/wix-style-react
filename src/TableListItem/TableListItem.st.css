@@ -3,6 +3,11 @@
   -st-named: B10, B30, B60, D50, D60, D80;
 }
 
+:import {
+  -st-from: "../TableActionCell/TableActionCell.st.css";
+  -st-default: TableActionCell;
+}
+
 :vars {
   horizontalPadding: 24px;
   checkedBorderWidth: 2px;
@@ -11,7 +16,7 @@
 }
 
 .root {
-  -st-states: checked, showDivider, verticalPadding(enum(small, medium)), draggable;
+  -st-states: checked, showDivider, verticalPadding(enum(small, medium)), draggable, clickable;
   background-color: value(D80);
   padding: 0 value(horizontalPadding);
 }
@@ -42,6 +47,16 @@
 
 .root:draggable:hover {
   background-color: value(B60);
+  cursor: move;
+}
+
+.root:draggable:hover .dragHandle {
+  color: value(B10);
+}
+
+.root:clickable:hover {
+  background-color: value(B60);
+  cursor: pointer;
 }
 
 .optionsContainer {
@@ -52,6 +67,9 @@
 .align {
   -st-states: position(enum(left, center, right));
   margin-left: 6px;
+}
+
+.align:not(:last-child) {
   margin-right: 18px;
 }
 
@@ -68,6 +86,7 @@
 }
 
 .checkbox {
+  display: flex;
   cursor: pointer;
   padding: 0 12px 0 6px;
 }
@@ -82,4 +101,22 @@
 
 .dragHandle:disabled {
   color: value(D50);
+}
+
+/* `onHover` HoverSlot */
+.root TableActionCell::hoverSlot.onHover {
+  visibility: hidden;
+}
+
+.root:hover TableActionCell::hoverSlot.onHover {
+  visibility: visible;
+}
+
+/* `notOnHover` HoverSlot */
+.root TableActionCell::hoverSlot.notOnHover {
+  visibility: visible;
+}
+
+.root:hover TableActionCell::hoverSlot.notOnHover {
+  visibility: hidden;
 }
