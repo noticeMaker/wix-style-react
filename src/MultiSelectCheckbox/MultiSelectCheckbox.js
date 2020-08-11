@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import Input from '../Input';
 import styles from './MultiSelectCheckbox.scss';
-import ListItemSelect, { listItemSelectBuilder } from '../ListItemSelect';
+import { listItemSelectBuilder } from '../ListItemSelect';
 import ListItemSection, { listItemSectionBuilder } from '../ListItemSection';
 
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
@@ -20,29 +20,24 @@ class MultiSelectCheckbox extends InputWithOptions {
         };
       } else {
         if (option.value === '-') {
-          debugger;
           return {
             ...option,
             overrideStyle: true,
             value: <ListItemSection type="divider" />,
           };
         } else {
-          const { id, value, disabled, prefix, suffix, ellipsis } = option;
-
           const builder = listItemSelectBuilder({
-            id,
+            ...option,
             checkbox: true,
-            title: value,
-            disabled,
-            prefix,
-            suffix,
-            ellipsis,
+            title: option.value,
           });
+
+          const value = builder.value;
 
           return {
             ...builder,
             value: props =>
-              builder.value({
+              value({
                 ...props,
                 selected: this.isSelectedId(option.id),
               }),
