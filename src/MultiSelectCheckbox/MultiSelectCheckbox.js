@@ -4,7 +4,7 @@ import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import Input from '../Input';
 import styles from './MultiSelectCheckbox.scss';
 import { listItemSelectBuilder } from '../ListItemSelect';
-import ListItemSection, { listItemSectionBuilder } from '../ListItemSection';
+import { listItemSectionBuilder } from '../ListItemSection';
 
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
 
@@ -20,10 +20,12 @@ class MultiSelectCheckbox extends InputWithOptions {
         };
       } else {
         if (option.value === '-') {
+          const builder = listItemSectionBuilder({
+            type: 'divider',
+          });
+
           return {
-            ...option,
-            overrideStyle: true,
-            value: <ListItemSection type="divider" />,
+            ...builder,
           };
         } else {
           const builder = listItemSelectBuilder({
