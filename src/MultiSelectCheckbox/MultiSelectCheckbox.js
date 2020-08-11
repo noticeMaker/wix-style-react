@@ -34,12 +34,14 @@ class MultiSelectCheckbox extends InputWithOptions {
 
           const value = builder.value;
 
+          debugger;
+
           return {
             ...builder,
             value: props =>
               value({
                 ...props,
-                selected: this.isSelectedId(option.id),
+                selected: this.isSelectedId(builder.id),
               }),
           };
         }
