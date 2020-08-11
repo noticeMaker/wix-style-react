@@ -7,6 +7,7 @@ import styles from './FilePicker.st.css';
 import FormField from '../FormField';
 import TextButton from '../TextButton';
 import Text from '../Text';
+import FileUpload from '../FileUpload/FileUpload';
 
 /**
  * # `<FilePicker/>`
@@ -45,44 +46,44 @@ class FilePicker extends React.PureComponent {
     } = this.props;
 
     return (
-      <FormField label={header} dataHook={dataHook}>
-        <label className={styles.label} htmlFor={this.id}>
-          {/* Icon */}
-          <div className={styles.icon}>
-            <Add />
-          </div>
+      <FileUpload
+        accept={supportedFormats}
+        onChange={e => this.onChooseFile(e.target.files[0])}
+        name={name}
+      >
+        {({ openFileUploadDialog }) => (
+          <FormField label={header} dataHook={dataHook}>
+            <label className={styles.label} onClick={openFileUploadDialog}>
+              {/* Icon */}
+              <div className={styles.icon}>
+                <Add />
+              </div>
 
-          <div className={styles.content}>
-            {/* Title */}
-            <TextButton dataHook="main-label">{mainLabel}</TextButton>
+              <div className={styles.content}>
+                {/* Title */}
+                <TextButton dataHook="main-label">{mainLabel}</TextButton>
 
-            {/* Subtitle */}
-            <Text
-              className={styles.info}
-              size="small"
-              secondary
-              dataHook="sub-label"
-            >
-              {this.state.selectedFileName}
-            </Text>
+                {/* Subtitle */}
+                <Text
+                  className={styles.info}
+                  size="small"
+                  secondary
+                  dataHook="sub-label"
+                >
+                  {this.state.selectedFileName}
+                </Text>
 
-            {/* Error */}
-            {error && (
-              <Text skin="error" size="small" dataHook="filePicker-error">
-                {errorMessage}
-              </Text>
-            )}
-          </div>
-        </label>
-        <input
-          id={this.id}
-          className={styles.input}
-          type="file"
-          accept={supportedFormats}
-          onChange={e => this.onChooseFile(e.target.files[0])}
-          name={name}
-        />
-      </FormField>
+                {/* Error */}
+                {error && (
+                  <Text skin="error" size="small" dataHook="filePicker-error">
+                    {errorMessage}
+                  </Text>
+                )}
+              </div>
+            </label>
+          </FormField>
+        )}
+      </FileUpload>
     );
   }
 }
