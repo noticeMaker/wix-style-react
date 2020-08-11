@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import Input from '../Input';
 import styles from './MultiSelectCheckbox.scss';
-import ListItemSelect from '../ListItemSelect';
-import ListItemSection from '../ListItemSection';
+import ListItemSelect, { listItemSelectBuilder } from '../ListItemSelect';
+import ListItemSection, { listItemSectionBuilder } from '../ListItemSection';
 
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
 
@@ -20,28 +20,32 @@ class MultiSelectCheckbox extends InputWithOptions {
         };
       } else {
         if (option.value === '-') {
+          debugger;
           return {
             ...option,
             overrideStyle: true,
             value: <ListItemSection type="divider" />,
           };
         } else {
+          const { id, value, disabled, prefix, suffix, ellipsis } = option;
+
+          const builder = listItemSelectBuilder({
+            id,
+            checkbox: true,
+            title: value,
+            disabled,
+            prefix,
+            suffix,
+            ellipsis,
+          });
+
           return {
-            ...option,
-            overrideStyle: true,
-            value: props => (
-              <ListItemSelect
-                checkbox
-                selected={this.isSelectedId(option.id)}
-                disabled={option.disabled}
-                title={option.value}
-                highlighted={props.hovered}
-                prefix={option.prefix}
-                suffix={option.suffix}
-                ellipsis={option.ellipsis}
-                onClick={e => e.preventDefault()} // This is prevented because there's an event listener wrapping the option
-              />
-            ),
+            ...builder,
+            value: props =>
+              builder.value({
+                ...props,
+                selected: this.isSelectedId(option.id),
+              }),
           };
         }
       }
