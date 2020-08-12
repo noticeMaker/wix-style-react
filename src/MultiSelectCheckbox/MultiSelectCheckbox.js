@@ -12,12 +12,7 @@ class MultiSelectCheckbox extends InputWithOptions {
   createOptions(options) {
     return options.map(option => {
       if (typeof option.value === 'function') {
-        const value = option.value;
-        return {
-          ...option,
-          value: props =>
-            value({ ...props, selected: this.isSelectedId(option.id) }),
-        };
+        return this._renderOption(option);
       } else {
         if (option.value === '-') {
           return listItemSectionBuilder({
@@ -30,20 +25,23 @@ class MultiSelectCheckbox extends InputWithOptions {
             checkbox: true,
             title: option.value,
           });
-
-          const value = builder.value;
-
-          return {
-            ...builder,
-            value: props =>
-              value({
-                ...props,
-                selected: this.isSelectedId(builder.id),
-              }),
-          };
+          return this._renderOption(builder);
         }
       }
     });
+  }
+
+  _renderOption(option) {
+    const value = option.value;
+
+    return {
+      ...option,
+      value: props =>
+        value({
+          ...props,
+          selected: this.isSelectedId(option.id),
+        }),
+    };
   }
 
   isSelectedId(optionId) {
