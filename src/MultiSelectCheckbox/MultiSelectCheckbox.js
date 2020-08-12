@@ -20,13 +20,10 @@ class MultiSelectCheckbox extends InputWithOptions {
         };
       } else {
         if (option.value === '-') {
-          const builder = listItemSectionBuilder({
+          return listItemSectionBuilder({
             type: 'divider',
+            ...option,
           });
-
-          return {
-            ...builder,
-          };
         } else {
           const builder = listItemSelectBuilder({
             ...option,

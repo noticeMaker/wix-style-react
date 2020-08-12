@@ -24,7 +24,7 @@ describe('multiSelectCheckbox', () => {
     const options = [
       { value: 'Alabama', id: 'Alabama-1' },
       { value: 'Alaska', id: 'Alaska' },
-      { value: <div>Arkansas</div>, id: 'Arkansas', label: 'Arkansan Label' },
+      { value: <div>Arkansas</div>, id: 'Arkansas' },
       { value: 'Arkansas', id: 'Arkansas' },
       { value: 'California', id: 'California' },
       { value: 'California2', id: 'California2' },
