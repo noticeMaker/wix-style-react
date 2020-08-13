@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../Loader/Loader';
-import HeaderLayout from '../MessageBox/FunctionalLayout/HeaderLayout';
-import FooterLayout from '../MessageBox/FunctionalLayout/FooterLayout';
 import Selector from '../Selector/Selector';
 import Search from '../Search/Search';
 import InfiniteScroll from '../utils/InfiniteScroll';
 import Text from '../Text';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 import Checkbox from '../Checkbox';
+import CustomModalLayout from '../CustomModalLayout/CustomModalLayout';
 
 import css from './ModalSelectorLayout.scss';
 
@@ -196,6 +195,13 @@ export default class ModalSelectorLayout extends React.PureComponent {
       height,
       maxHeight,
       searchDebounceMs,
+      onCancel,
+      onOk,
+      cancelButtonText,
+      okButtonText,
+      multiple,
+      disableConfirmation,
+      sideActions,
     } = this.props;
 
     const {
@@ -205,16 +211,32 @@ export default class ModalSelectorLayout extends React.PureComponent {
       isSearching,
       searchValue,
       shouldShowNoResultsFoundState,
+      selectedItems,
     } = this.state;
 
-    return (
-      <div
-        data-hook={dataHook}
-        className={css.modalContent}
-        style={{ height, maxHeight }}
-      >
-        <HeaderLayout title={title} onCancel={onClose} />
+    const enabledItems = this._getEnabledItems(selectedItems);
 
+    return (
+      <CustomModalLayout
+        data-hook={dataHook}
+        showHeaderDivider
+        style={{ height, maxHeight, width: '600px' }}
+        title={title}
+        onCloseButtonClick={onClose}
+        secondaryButtonOnClick={onCancel}
+        primaryButtonOnClick={() =>
+          onOk(multiple ? enabledItems : enabledItems[0])
+        }
+        secondaryButtonText={cancelButtonText}
+        primaryButtonText={okButtonText}
+        primaryButtonProps={{
+          disabled: disableConfirmation || !selectedItems.length,
+        }}
+        sideActions={
+          sideActions ? sideActions : multiple && this._renderFooterSelector()
+        }
+        removeContentPadding
+      >
         {isLoaded && !isEmpty && (
           <div className={css.subheaderWrapper}>
             {subtitle && (
@@ -278,9 +300,7 @@ export default class ModalSelectorLayout extends React.PureComponent {
             />
           )}
         </div>
-
-        {this._renderFooter()}
-      </div>
+      </CustomModalLayout>
     );
   }
 
@@ -389,34 +409,6 @@ export default class ModalSelectorLayout extends React.PureComponent {
   }
 
   _getEnabledItems = items => items.filter(({ disabled }) => !disabled);
-
-  _renderFooter = () => {
-    const { selectedItems } = this.state;
-
-    const {
-      onCancel,
-      onOk,
-      cancelButtonText,
-      okButtonText,
-      multiple,
-      disableConfirmation,
-      sideActions,
-    } = this.props;
-
-    const enabledItems = this._getEnabledItems(selectedItems);
-
-    return (
-      <FooterLayout
-        onCancel={onCancel}
-        onOk={() => onOk(multiple ? enabledItems : enabledItems[0])}
-        cancelText={cancelButtonText}
-        confirmText={okButtonText}
-        enableOk={!disableConfirmation && !!selectedItems.length}
-        children={!sideActions && multiple && this._renderFooterSelector()}
-        sideActions={sideActions}
-      />
-    );
-  };
 
   _renderFooterSelector = () => {
     const { selectAllText, deselectAllText } = this.props;
