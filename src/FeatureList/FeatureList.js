@@ -57,7 +57,7 @@ const FeatureItem = ({ index, image, title, text }) => (
       {title && (
         <div className={classes.featureItemTitleContainer}>
           <Text
-            data-hook={`${dataHooks.featureTitle}${index}`}
+            dataHook={`${dataHooks.featureTitle}${index}`}
             size="medium"
             weight="bold"
           >
@@ -66,7 +66,7 @@ const FeatureItem = ({ index, image, title, text }) => (
         </div>
       )}
       {text && (
-        <Text data-hook={`${dataHooks.featureText}${index}`} size="small">
+        <Text dataHook={`${dataHooks.featureText}${index}`} size="small">
           {text}
         </Text>
       )}
