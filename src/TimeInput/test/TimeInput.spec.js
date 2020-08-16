@@ -236,6 +236,30 @@ describe('TimeInput', () => {
         await driver.setValue('10a:02');
         expect(await driver.getValue()).toBe('11:01');
       });
+
+      it.each([
+        { status: 'error', statusMessage: 'Error Message' },
+        { status: 'warning', statusMessage: 'Warning Message' },
+        { status: 'loading', statusMessage: 'Loading Message' },
+      ])('should display status when %p', async test => {
+        const props = {
+          defaultValue: defaultMoment,
+          ...test,
+        };
+        const { driver } = render(<TimeInput {...props} />);
+
+        expect(await driver.hasStatus(test.status)).toBe(true);
+        expect(await driver.getStatusMessage()).toBe(test.statusMessage);
+      });
+
+      it('should not have status', async () => {
+        const props = {
+          defaultValue: defaultMoment,
+        };
+        const { driver } = render(<TimeInput {...props} />);
+        expect(await driver.hasStatus('error')).toBe(false);
+        expect(await driver.getStatusMessage()).toBeNull();
+      });
     });
 
     describe('Styling', () => {

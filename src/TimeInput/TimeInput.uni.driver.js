@@ -23,5 +23,7 @@ export const timeInputUniDriverFactory = (base, body) => {
     isRtl: async () => input.isRTL(),
     setValue: async value => input.enterText(value),
     blur: async () => input.blur(),
+    hasStatus: status => input.hasStatus(status),
+    getStatusMessage: () => input.getStatusMessage(),
   };
 };

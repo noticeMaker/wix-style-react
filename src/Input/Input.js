@@ -282,12 +282,19 @@ class Input extends Component {
       return;
     }
 
-    this.props.onKeyDown && this.props.onKeyDown(e);
+    const { onKeyDown, onEnterPressed, onEscapePressed } = this.props;
 
-    if (e.keyCode === 13 /* enter */) {
-      this.props.onEnterPressed && this.props.onEnterPressed(e);
-    } else if (e.keyCode === 27 /* esc */) {
-      this.props.onEscapePressed && this.props.onEscapePressed(e);
+    // On key event
+    onKeyDown && onKeyDown(e);
+
+    // Enter
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      onEnterPressed && onEnterPressed(e);
+    }
+
+    // Escape
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      onEscapePressed && onEscapePressed(e);
     }
   };
 
@@ -516,7 +523,7 @@ Input.propTypes = {
   /** Placement of status tooltips */
   tooltipPlacement: PropTypes.string,
 
-  /** Specifies the type of <input> element to display.default is text. */
+  /** Specifies the type of `<input/>` element to display.default is text. */
   type: PropTypes.string,
 
   /** Inputs value */

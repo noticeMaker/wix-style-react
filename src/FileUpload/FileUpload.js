@@ -16,19 +16,25 @@ class FileUpload extends React.PureComponent {
       multiple,
       accept,
       capture,
+      name,
       onChange,
     } = this.props;
 
     return (
       <label className={className} data-hook={dataHook}>
-        {React.cloneElement(children, {
-          onClick: event => {
-            if (typeof children.props.onClick === 'function')
-              children.props.onClick();
+        {children({
+          openFileUploadDialog: event => {
+            // Open the file upload dialog
             this.inputRef.current.click();
-            event.preventDefault();
+
+            // In case the click event comes from a non-button element
+            if (event) {
+              event.preventDefault();
+            }
           },
         })}
+
+        {/* An invisible input type="file" in order to open a file upload dialog */}
         <input
           type="file"
           data-hook={dataHooks.input}
@@ -37,6 +43,7 @@ class FileUpload extends React.PureComponent {
           multiple={multiple}
           accept={accept}
           capture={capture}
+          name={name}
           onChange={event => onChange(event.target.files)}
         />
       </label>
@@ -53,8 +60,13 @@ FileUpload.propTypes = {
   /** A css class to be applied to the component's root element */
   className: PropTypes.string,
 
-  /** An element to be wrapped by the component */
-  children: PropTypes.element.isRequired,
+  /** Children render prop
+   * ##### signature:
+   * function({ openFileUpload }): element
+   * * `openFileUpload`: A function that will open a file upload dialog upon trigger.
+   * * return: A react element
+   */
+  children: PropTypes.func.isRequired,
 
   /** Allow uploading multiple files */
   multiple: PropTypes.bool,
@@ -64,6 +76,9 @@ FileUpload.propTypes = {
 
   /** specifies which camera to use for capture of image or video data */
   capture: PropTypes.oneOf(['user', 'environment']),
+
+  /** A form data name to be submitted along with the control's value */
+  name: PropTypes.string,
 
   /** input onChange callback */
   onChange: PropTypes.func.isRequired,

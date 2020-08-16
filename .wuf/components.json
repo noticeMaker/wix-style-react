@@ -131,6 +131,9 @@
       "docs/index.story.js"
     ]
   },
+  "Dropzone": {
+    "path": "src/Dropzone"
+  },
   "EditableSelector": {
     "path": "src/EditableSelector"
   },

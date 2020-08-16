@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import { Modal, Button, Box, MessageBoxFunctionalLayout } from 'wix-style-react';
 
 class SimpleExample extends React.Component {
   state = {

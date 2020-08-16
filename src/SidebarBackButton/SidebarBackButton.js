@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 
 import Text from '../Text';
-import styles from './SidebarBackButton.st.css';
+import { st, classes } from './SidebarBackButton.st.css';
 import { SidebarContext } from '../Sidebar/SidebarAPI';
 import { sidebarSkins } from '../Sidebar/constants';
 
@@ -14,10 +14,18 @@ class SidebarBackButton extends React.PureComponent {
   static displayName = 'SidebarBackButton';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
+
+    /** click event handler  */
     onClick: PropTypes.func,
+
     /** Text for the button */
     children: PropTypes.string,
+
     /** Whether or not to constantly animate the arrow */
     animateArrow: PropTypes.func,
   };
@@ -28,6 +36,7 @@ class SidebarBackButton extends React.PureComponent {
       animateArrow,
       onClick,
       dataHook,
+      className,
       focusableOnFocus,
       focusableOnBlur,
     } = this.props;
@@ -38,10 +47,12 @@ class SidebarBackButton extends React.PureComponent {
           const skin = (context && context.getSkin()) || sidebarSkins.dark;
           return (
             <button
-              {...styles(
-                'BackButton',
-                { lightSkin: skin === sidebarSkins.light },
-                this.props,
+              className={st(
+                classes.BackButton,
+                {
+                  lightSkin: skin === sidebarSkins.light,
+                },
+                className,
               )}
               data-hook={dataHook}
               onClick={onClick}
@@ -51,7 +62,7 @@ class SidebarBackButton extends React.PureComponent {
               tabIndex="0"
             >
               <ChevronLeft
-                {...styles('arrow', { animated: animateArrow }, this.props)}
+                className={st(classes.arrow, { animated: animateArrow })}
               />
               <Text
                 weight="bold"

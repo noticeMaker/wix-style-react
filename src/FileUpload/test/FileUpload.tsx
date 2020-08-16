@@ -8,9 +8,15 @@ import * as puppeteer from 'puppeteer';
 import Button from '../../Button';
 
 function fileUploadWithMandatoryProps() {
-  return <FileUpload onChange={() => {}} children={<Button />} />;
+  return (
+    <FileUpload
+      onChange={() => {}}
+      children={({ openFileUploadDialog }) => (
+        <Button onClick={openFileUploadDialog} />
+      )}
+    />
+  );
 }
-
 function fileUploadWithAllProps() {
   return (
     <FileUpload
@@ -20,7 +26,10 @@ function fileUploadWithAllProps() {
       accept="jpg"
       capture="user"
       multiple
-      children={<div />}
+      name="name"
+      children={({ openFileUploadDialog }) => (
+        <Button onClick={openFileUploadDialog} />
+      )}
     />
   );
 }

@@ -19,6 +19,7 @@ import StructureExampleRaw from '!raw-loader!./examples/Structure';
 import SizesExampleRaw from '!raw-loader!./examples/Sizes';
 import CustomizingTagsExampleRaw from '!raw-loader!./examples/CustomizingTags';
 import UsageExampleRaw from '!raw-loader!./examples/Usage';
+import CollapsableExampleRaw from '!raw-loader!./examples/Collapsable';
 
 import TagList from '..';
 
@@ -113,6 +114,13 @@ export default {
             title: 'Customizing Tags',
             text: `Component allows to pass all <Tag/> properties except size.`,
             source: CustomizingTagsExampleRaw,
+          }),
+
+          example({
+            title: 'Expandable',
+            text:
+              'Component allows to pass the maxVisibleTags prop to limit the number of tags shown (default: 3).',
+            source: CollapsableExampleRaw,
           }),
 
           example({

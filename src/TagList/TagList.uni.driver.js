@@ -1,20 +1,33 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { tagUniDriverFactory } from '../Tag/Tag.uni.driver';
+import dataHooks from './dataHooks';
 
 export const tagListDriverFactory = (base, body) => {
-  const getTagListActionTestkit = async () =>
-    buttonDriverFactory(base.$(`[data-hook="tag-list-action"]`));
+  const actionButton = buttonDriverFactory(
+    base.$(`[data-hook="${dataHooks.actionButton}"]`),
+  );
+  const toggleMoreButton = buttonDriverFactory(
+    base.$(`[data-hook="${dataHooks.toggleMoreButton}"]`),
+  );
 
   return {
     ...baseUniDriverFactory(base, body),
+
     /** Get the action button label */
-    actionButtonLabel: async () =>
-      (await getTagListActionTestkit()).getButtonTextContent(),
+    actionButtonLabel: () => actionButton.getButtonTextContent(),
     /** Click action button */
-    clickActionButton: async () => (await getTagListActionTestkit()).click(),
+    clickActionButton: () => actionButton.click(),
     /** Get if action button exists */
-    actionButtonExists: async () => (await getTagListActionTestkit()).exists(),
+    actionButtonExists: () => actionButton.exists(),
+
+    /** Get the toggle more button label */
+    toggleMoreButtonLabel: () => toggleMoreButton.getButtonTextContent(),
+    /** Click toggle more button */
+    clickToggleMoreButton: () => toggleMoreButton.click(),
+    /** Get if toggle more button exists */
+    toggleMoreButtonExists: () => toggleMoreButton.exists(),
+
     /** Remove tag by id */
     removeTag: id => tagUniDriverFactory(base.$(`#${id}`)).removeTag(),
   };
