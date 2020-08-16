@@ -79,18 +79,64 @@ describe(MarketingPageLayoutContent.displayName, () => {
       expect(await driver.getSubtitleText()).toBe(subtitle);
     });
 
-    it('should not display subtitle', () => {});
+    it('should render the provided `subtitle` node', async () => {
+      const subtitleNode = <div data-hook="subtitle">Outline Text</div>;
+      const { driver } = render(
+        <MarketingPageLayoutContent subtitle={subtitleNode} />,
+      );
+
+      expect(await driver.childExists('subtitle')).toBe(true);
+    });
+
+    it('should not display subtitle', async () => {
+      const { driver } = render(<MarketingPageLayoutContent />);
+
+      expect(await driver.hasSubtitle()).toBe(false);
+    });
   });
 
-  xdescribe('content area', () => {
-    it('should display content area', () => {});
+  describe('content area', () => {
+    it('should render the provided `content` text', async () => {
+      const content = 'content text';
+      const { driver } = render(
+        <MarketingPageLayoutContent content={content} />,
+      );
 
-    it('should not display content area', () => {});
+      expect(await driver.getContentText()).toBe(content);
+    });
+
+    it('should render the provided `content` node', async () => {
+      const contentNode = <div data-hook="content">Content Node</div>;
+      const { driver } = render(
+        <MarketingPageLayoutContent content={contentNode} />,
+      );
+
+      expect(await driver.childExists('content')).toBe(true);
+    });
+
+    it('should not display content area', async () => {
+      const { driver } = render(<MarketingPageLayoutContent />);
+
+      expect(await driver.hasContent()).toBe(false);
+    });
   });
 
-  xdescribe('actions', () => {
-    it('should display actions', () => {});
+  describe('actions', () => {
+    it('should render the provided `actions` node', async () => {
+      const actionsNode = (
+        <button data-hook="actionButton">action button</button>
+      );
+      const { driver } = render(
+        <MarketingPageLayoutContent actions={actionsNode} />,
+      );
 
-    it('should not display actions', () => {});
+      expect(await driver.childExists('actionButton')).toBe(true);
+    });
+
+    it('should not display actions', async () => {
+      const { driver } = render(<MarketingPageLayoutContent />);
+
+      expect(await driver.hasActions()).toBe(false);
+    });
   });
 });
