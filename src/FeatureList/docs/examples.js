@@ -25,7 +25,7 @@ export const basicExample = `
 
 export const columnsExample = `
     <FeatureList
-      cols={3}
+      cols={2}
       features={[
           {
             id: '0001',
