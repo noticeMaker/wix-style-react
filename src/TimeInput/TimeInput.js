@@ -46,6 +46,15 @@ export default class TimeInput extends Component {
 
     /** Custom suffix, located before ticker */
     customSuffix: PropTypes.node,
+
+    /** Error flag */
+    status: PropTypes.oneOf(['error', 'warning', 'loading']),
+
+    /** When set to true, this input won't display status suffix */
+    hideStatusSuffix: PropTypes.bool,
+
+    /** The status message to display when hovering the status icon, if not given or empty there will be no tooltip */
+    statusMessage: PropTypes.node,
   };
 
   static defaultProps = {
@@ -228,6 +237,9 @@ export default class TimeInput extends Component {
       dashesWhenDisabled,
       width,
       rtl,
+      status,
+      hideStatusSuffix,
+      statusMessage,
     } = this.props;
     const text = disabled && dashesWhenDisabled ? '-- : --' : this.state.text;
 
@@ -291,9 +303,12 @@ export default class TimeInput extends Component {
         onFocus={this._handleFocus}
         onChange={this._handleInputChange}
         onBlur={this._handleInputBlur}
-        suffix={suffix}
         dataHook={dataHooks.input}
         disabled={disabled}
+        suffix={suffix}
+        status={status}
+        hideStatusSuffix={hideStatusSuffix}
+        statusMessage={statusMessage}
       />
     );
   }
@@ -301,7 +316,6 @@ export default class TimeInput extends Component {
   render() {
     const { className, style, dataHook, rtl, disabled, width } = this.props;
     const { focus, hover } = this.state;
-
     return (
       <div
         className={classNames(styles.wrapper, className, {

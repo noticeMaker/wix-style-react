@@ -4,8 +4,8 @@
 }
 
 :import {
-  -st-from: "wix-ui-core/hocs.st.css";
-  -st-named: Focusable;
+  -st-from: "wix-ui-core/dist/src/hocs/Focusable/Focusable.st.css";
+  -st-default: Focusable;
 }
 
 :import {
@@ -19,16 +19,23 @@
 
 .item {
   -st-extends: Focusable;
-  -st-states: clickable;
+  -st-states: clickable, size(enum(tiny, large));
   position: relative;
   display: flex;
   overflow: hidden;
   flex: 1;
   flex-direction: column;
   box-sizing: border-box;
-  padding: value(gap);
   white-space: nowrap;
   transition: background-color .3s ease-in-out;
+}
+
+.item:size(tiny) {
+  padding: 24px value(gap);
+}
+
+.item:size(large) {
+  padding: value(gap);
 }
 
 .item:clickable {

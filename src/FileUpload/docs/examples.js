@@ -1,6 +1,6 @@
 export const simple = `
 <FileUpload onChange={files => console.log(files)}>
-  <Button>Upload a File</Button>
+{({ openFileUploadDialog })=> <Button onClick={openFileUploadDialog}>Upload a File</Button>}
 </FileUpload>
 `;
 export const withMultipleAndAccept = `
@@ -9,6 +9,10 @@ export const withMultipleAndAccept = `
   multiple
   accept=".jpeg,.gif,.png"
 >
-  <TextButton prefixIcon={<Icons.Image />}>Upload Images</TextButton>
+{({ openFileUploadDialog })=> (
+  <TextButton prefixIcon={<Icons.Image />} onClick={openFileUploadDialog}>
+    Upload Images
+  </TextButton>
+)}
 </FileUpload>
 `;

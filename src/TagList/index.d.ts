@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { TagProps } from '../Tag';
 import { ButtonProps } from '../Button';
-import { TooltipProps } from '../Tooltip';
-import { OmitPolyfill } from '../common';
+import { OmitPolyfill, TooltipCommonProps } from '../common';
 
 export type TagListSize = 'small' | 'medium' | 'large';
 
@@ -26,7 +25,8 @@ type TagListActionButtonProps = Pick<ButtonProps, 'onClick'> & {
 
 type ToggleMoreButtonProps = {
   label: string;
-  tooltipProps?: TooltipProps;
+  tooltipContent?: React.ReactNode;
+  tooltipProps?: TooltipCommonProps;
 };
 
 export default class TagList extends React.PureComponent<TagListProps> {}

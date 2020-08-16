@@ -1,9 +1,5 @@
-import {
-  radioGroupUniDriverFactory as publicDriverFactory,
-  createRadioButtonsGetter,
-} from '../RadioGroup.uni.driver';
-import { dataHooks } from '../constants';
-import { radioButtonUniDriverFactory } from '../RadioButton/RadioButton.uni.driver';
+import { radioGroupUniDriverFactory as publicDriverFactory } from '../RadioGroup.uni.driver';
+import { createRadioButtonsGetter } from '../sharedDriverMethods';
 
 export const radioGroupPrivateDriverFactory = (base, body) => {
   const getRadioButtons = createRadioButtonsGetter(base, body);

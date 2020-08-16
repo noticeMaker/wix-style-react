@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TagList.st.css';
+import { st, classes } from './TagList.st.css';
 import Tag from '../Tag';
 import TagListAction from './TagListAction';
 import ToggleMoreButton from './ToggleMoreButton';
-import classNames from 'classnames';
 import dataHooks from './dataHooks';
 
 const tagToActionButtonSize = {
@@ -65,11 +64,11 @@ class TagList extends React.PureComponent {
     const actionButtonSize = tagToActionButtonSize[size];
 
     return (
-      <div className={styles.root} data-hook={dataHook}>
+      <div className={classes.root} data-hook={dataHook}>
         {visibleTags.map(({ className, ...tagProps }) => (
           <Tag
             {...tagProps}
-            className={classNames(styles.item, className)}
+            className={st(classes.item, className)}
             size={size}
             onRemove={onTagRemove}
             key={tagProps.id}
@@ -117,7 +116,15 @@ TagList.propTypes = {
     label: PropTypes.string,
   }),
 
-  /** Receives `amountOfHiddenTags` and `isExpanded` and returns object containing toggle more button's `label` and `tooltipProps` */
+  /** Function which provides props for the Toggle more `Button`
+   * ##### toggleMoreButton signature:
+   * function(amountOfHiddenTags: number, isExpanded: boolean) => ToggleMoreButtonProps
+   * ##### ToggleMoreButtonProps: shape [
+   * * label: string
+   * * tooltipContent: node
+   * * tooltipProps: TooltipCommonProps
+   * ]
+   */
   toggleMoreButton: PropTypes.func,
 };
 

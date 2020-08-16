@@ -338,10 +338,9 @@ $cellHorizontalEdgePadding: 30px;
         background-color: $D80;
     }
 
-    .clickableDataRow:hover {
-      .stickyActionCell {
-          background-color: $B50;
-      }
+    &.clickableDataRow td {
+      cursor: pointer;
+      background-color: $B50;
     }
 
     .stickyActionCell [data-hook="table-action-cell-popover-menu"] {
