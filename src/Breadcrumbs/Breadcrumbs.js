@@ -59,6 +59,7 @@ class Breadcrumbs extends React.PureComponent {
           {context => (
             <Text
               className={classes.itemText}
+              wrapperClassName={classes.itemText}
               dataHook={DATA_HOOKS.BREADCRUMBS_ITEM}
               weight={isActive ? 'normal' : 'thin'}
               light={theme === THEMES.onDarkBackground}
