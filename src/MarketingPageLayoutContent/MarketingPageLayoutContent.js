@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './MarketingPageLayoutContent.st.css';
+import { st, classes } from './MarketingPageLayoutContent.st.css';
 import { dataHooks, size } from './constants';
 
 import Text, { SIZES as TEXT_SIZES } from '../Text';
@@ -42,15 +42,18 @@ class MarketingPageLayoutContent extends React.PureComponent {
     } = this.props;
 
     return (
-      <div {...styles('root', { size }, className)} data-hook={dataHook}>
+      <div
+        data-hook={dataHook}
+        className={st(classes.root, { size }, className)}
+      >
         {overline && (
           <div
-            className={styles.overlineContainer}
             data-hook={dataHooks.overlineContainer}
+            className={classes.overlineContainer}
           >
             <div
-              className={styles.overline}
               data-hook={dataHooks.overline}
+              className={classes.overline}
               children={
                 isString(overline) ? (
                   <Text size={sizesMap.overline[size]}>{overline}</Text>
@@ -59,13 +62,13 @@ class MarketingPageLayoutContent extends React.PureComponent {
                 )
               }
             />
-            <div className={styles.overlineDivider} />
+            <div className={classes.overlineDivider} />
           </div>
         )}
         {title && (
           <div
-            className={styles.title}
             data-hook={dataHooks.title}
+            className={classes.title}
             children={
               isString(title) ? (
                 <Heading appearance={sizesMap.title[size]}>{title}</Heading>
@@ -77,8 +80,8 @@ class MarketingPageLayoutContent extends React.PureComponent {
         )}
         {subtitle && (
           <div
-            className={styles.subtitle}
             data-hook={dataHooks.subtitle}
+            className={classes.subtitle}
             children={
               isString(subtitle) ? (
                 <Heading appearance={sizesMap.subtitle[size]}>
@@ -92,8 +95,8 @@ class MarketingPageLayoutContent extends React.PureComponent {
         )}
         {content && (
           <div
-            className={styles.content}
             data-hook={dataHooks.content}
+            className={classes.content}
             children={
               isString(content) ? (
                 <Text size={sizesMap.content[size]}>{content}</Text>
@@ -105,8 +108,8 @@ class MarketingPageLayoutContent extends React.PureComponent {
         )}
         {actions && (
           <div
-            className={styles.actions}
             data-hook={dataHooks.actions}
+            className={classes.actions}
             children={actions}
           />
         )}
