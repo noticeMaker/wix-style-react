@@ -87,13 +87,11 @@ class ListItemSection extends React.PureComponent {
       ellipsis,
       onClick,
     } = this.props;
+    const subheader = type === TYPES.SUBHEADER;
+
     return (
       <div
-        className={st(
-          classes.root,
-          { subheader: type === TYPES.SUBHEADER },
-          className,
-        )}
+        className={st(classes.root, { subheader }, className)}
         data-hook={dataHook}
       >
         {/* Text */}
@@ -101,7 +99,7 @@ class ListItemSection extends React.PureComponent {
           dataHook={dataHooks.TITLE}
           tagName="div"
           size="small"
-          className={classes.title}
+          className={st(classes.title, { subheader })}
           ellipsis={ellipsis}
           showDelay={300}
         >
