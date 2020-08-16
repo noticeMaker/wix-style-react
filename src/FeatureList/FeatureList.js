@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import styles from './FeatureList.st.css';
+import { st, classes } from './FeatureList.st.css';
 import { dataHooks } from './constants';
 
 const isString = a => typeof a === 'string';
@@ -14,7 +14,7 @@ class FeatureList extends React.PureComponent {
 
     return (
       <div
-        {...styles('root', {}, className)}
+        className={st(classes.root, className)}
         data-hook={dataHook}
         style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
@@ -35,15 +35,15 @@ class FeatureList extends React.PureComponent {
 }
 
 const FeatureItem = ({ index, image, title, text }) => (
-  <div className={styles.featureItem} data-hook={dataHooks.feature}>
+  <div className={classes.featureItem} data-hook={dataHooks.feature}>
     {image && (
       <div
-        className={styles.featureItemImageContainer}
+        className={classes.featureItemImageContainer}
         data-hook={`${dataHooks.featureImage}${index}`}
         children={
           isString(image) ? (
             <img
-              className={styles.featureItemImage}
+              className={classes.featureItemImage}
               src={image}
               alt="featureImage"
             />
@@ -53,9 +53,9 @@ const FeatureItem = ({ index, image, title, text }) => (
         }
       />
     )}
-    <div className={styles.featureItemTextContainer}>
+    <div className={classes.featureItemTextContainer}>
       {title && (
-        <div className={styles.featureItemTitleContainer}>
+        <div className={classes.featureItemTitleContainer}>
           <Text
             data-hook={`${dataHooks.featureTitle}${index}`}
             size="medium"

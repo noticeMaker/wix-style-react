@@ -3,6 +3,6 @@ import Registry from '@ui-autotools/registry';
 
 const metadata = Registry.getComponentMetadata(FeatureList);
 
-metadata.exportedFrom({
+metadata.exportInfo = {
   path: 'src/FeatureList/FeatureList.js',
-});
+};
