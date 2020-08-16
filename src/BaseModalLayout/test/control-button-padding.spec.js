@@ -12,8 +12,4 @@ describe('Control Button padding', () => {
   it('should add gap width with more than one button', () => {
     expect(controlButtonPadding(2)).toBe('78px');
   });
-
-  it('should throw error with more than two buttons', () => {
-    expect(() => controlButtonPadding(3)).toThrow();
-  });
 });
