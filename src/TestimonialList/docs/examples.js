@@ -25,7 +25,7 @@ export const basicExample = `
 
 export const columnsExample = `
     <TestimonialList
-        cols={3}
+        cols={2}
         testimonials={[
           {
             id: '0001',
