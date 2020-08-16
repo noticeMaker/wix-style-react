@@ -51,60 +51,68 @@ class MarketingPageLayoutContent extends React.PureComponent {
             data-hook={dataHooks.overlineContainer}
             className={classes.overlineContainer}
           >
-            <div
-              data-hook={dataHooks.overline}
-              className={classes.overline}
-              children={
-                isString(overline) ? (
-                  <Text size={sizesMap.overline[size]}>{overline}</Text>
-                ) : (
-                  overline
-                )
-              }
-            />
+            <div className={classes.overlineTextContainer}>
+              {isString(overline) ? (
+                <Text
+                  dataHook={dataHooks.overline}
+                  size={sizesMap.overline[size]}
+                >
+                  {overline}
+                </Text>
+              ) : (
+                overline
+              )}
+            </div>
             <div className={classes.overlineDivider} />
           </div>
         )}
         {title && (
           <div
-            data-hook={dataHooks.title}
-            className={classes.title}
-            children={
-              isString(title) ? (
-                <Heading appearance={sizesMap.title[size]}>{title}</Heading>
-              ) : (
-                title
-              )
-            }
-          ></div>
+            data-hook={dataHooks.titleContainer}
+            className={classes.titleContainer}
+          >
+            {isString(title) ? (
+              <Heading
+                dataHook={dataHooks.title}
+                appearance={sizesMap.title[size]}
+              >
+                {title}
+              </Heading>
+            ) : (
+              title
+            )}
+          </div>
         )}
         {subtitle && (
           <div
-            data-hook={dataHooks.subtitle}
-            className={classes.subtitle}
-            children={
-              isString(subtitle) ? (
-                <Heading appearance={sizesMap.subtitle[size]}>
-                  {subtitle}
-                </Heading>
-              ) : (
-                subtitle
-              )
-            }
-          ></div>
+            data-hook={dataHooks.subtitleContainer}
+            className={classes.subtitleContainer}
+          >
+            {isString(subtitle) ? (
+              <Heading
+                dataHook={dataHooks.subtitle}
+                appearance={sizesMap.subtitle[size]}
+              >
+                {subtitle}
+              </Heading>
+            ) : (
+              subtitle
+            )}
+          </div>
         )}
         {content && (
           <div
-            data-hook={dataHooks.content}
-            className={classes.content}
-            children={
-              isString(content) ? (
-                <Text size={sizesMap.content[size]}>{content}</Text>
-              ) : (
-                content
-              )
-            }
-          ></div>
+            data-hook={dataHooks.contentContainer}
+            className={classes.contentContainer}
+          >
+            {isString(content) ? (
+              <Text dataHook={dataHooks.content} size={sizesMap.content[size]}>
+                {content}
+              </Text>
+            ) : (
+              content
+            )}
+          </div>
         )}
         {actions && (
           <div

@@ -1,8 +1,11 @@
 export const dataHooks = {
   overlineContainer: 'overlineContainer',
-  outline: 'outline',
+  overline: 'overline',
+  titleContainer: 'titleContainer',
   title: 'title',
+  subtitleContainer: 'subtitleContainer',
   subtitle: 'subtitle',
+  contentContainer: 'contentContainer',
   content: 'content',
   actions: 'actions',
 };

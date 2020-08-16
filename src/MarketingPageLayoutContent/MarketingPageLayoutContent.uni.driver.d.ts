@@ -10,4 +10,5 @@ export interface MarketingPageLayoutContentUniDriver extends BaseUniDriver {
   hasContent(): Promise<boolean>;
   getContentText(): Promise<string>;
   hasActions(): Promise<boolean>;
+  childExists(): Promise<boolean>;
 }

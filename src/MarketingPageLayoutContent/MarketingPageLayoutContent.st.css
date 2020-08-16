@@ -14,7 +14,7 @@
 .overlineContainer {
 }
 
-.overline {
+.overlineTextContainer {
   margin-bottom: 17px;
 }
 
@@ -24,15 +24,15 @@
   margin-bottom: value(spacing12);
 }
 
+.titleContainer {
 
-.title {
 }
 
-.subtitle {
+.subtitleContainer {
   margin-top: value(spacing12);
 }
 
-.content {
+.contentContainer {
   margin-top: value(spacing24);
   color: value(D10);
 }
