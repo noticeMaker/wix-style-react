@@ -3,17 +3,111 @@ import { storiesOf } from '@storybook/react';
 import MarketingPageLayoutContent from '../MarketingPageLayoutContent';
 
 const commonProps = {
-  // use for repeated props across the tests (e.g. {buttonText: 'example'})
+  overline: 'overline',
+  title: 'Marketing Page Title',
+  subtitle: 'Subtitle text',
+  content: (
+    <div>
+      <div>First Feature</div> <div>Second Feature</div>
+      <div>Third Feature</div>
+    </div>
+  ),
+  actions: <button>Main Action</button>,
 };
 
 const tests = [
   {
-    describe: 'sanity', // prop name (e.g. size)
+    describe: 'sanity',
     its: [
       {
-        it: 'default', // prop variation (e.g. small)
+        it: 'default',
+        props: {},
+      },
+      {
+        it: 'no overline',
         props: {
-          // the simulation (e.g. {size: "small"})
+          overline: '',
+          title: 'Marketing Page Title',
+          subtitle: 'Subtitle text',
+          content: (
+            <div>
+              <div>First Feature</div> <div>Second Feature</div>
+              <div>Third Feature</div>
+            </div>
+          ),
+          actions: <button>Main Action</button>,
+        },
+      },
+      {
+        it: 'no title',
+        props: {
+          overline: 'overline',
+          title: '',
+          subtitle: 'Subtitle text',
+          content: (
+            <div>
+              <div>First Feature</div> <div>Second Feature</div>
+              <div>Third Feature</div>
+            </div>
+          ),
+          actions: <button>Main Action</button>,
+        },
+      },
+      {
+        it: 'no subtitle',
+        props: {
+          overline: 'overline',
+          title: 'Marketing Page Title',
+          subtitle: '',
+          content: (
+            <div>
+              <div>First Feature</div> <div>Second Feature</div>
+              <div>Third Feature</div>
+            </div>
+          ),
+          actions: <button>Main Action</button>,
+        },
+      },
+      {
+        it: 'no content',
+        props: {
+          overline: 'overline',
+          title: 'Marketing Page Title',
+          subtitle: 'Subtitle text',
+          content: '',
+          actions: <button>Main Action</button>,
+        },
+      },
+      {
+        it: 'no actions',
+        props: {
+          overline: 'overline',
+          title: 'Marketing Page Title',
+          subtitle: 'Subtitle text',
+          content: (
+            <div>
+              <div>First Feature</div> <div>Second Feature</div>
+              <div>Third Feature</div>
+            </div>
+          ),
+          actions: '',
+        },
+      },
+    ],
+  },
+  {
+    describe: 'size',
+    its: [
+      {
+        it: 'medium',
+        props: {
+          size: 'medium',
+        },
+      },
+      {
+        it: 'large',
+        props: {
+          size: 'large',
         },
       },
     ],

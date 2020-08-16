@@ -78,7 +78,7 @@ const javascriptFiles = [
   ['ListItemSelect.bundle.min.js', 45],
   ['Loader.bundle.min.js', 44],
   ['MarketingLayout.bundle.min.js', 40],
-  ['MarketingPageLayoutContent.bundle.min.js', 10],
+  ['MarketingPageLayoutContent.bundle.min.js', 34],
   ['MediaOverlay.bundle.min.js', 14],
   ['MessageModalLayout.bundle.min.js', 47],
   ['MobilePreviewWidget.bundle.min.js', 7],
