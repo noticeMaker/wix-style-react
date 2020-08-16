@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { skins, dataHooks } from './constants';
-import colors from '../Foundation/stylable/colors.st.css';
+import { stVars as colors } from '../Foundation/stylable/colors.st.css';
 
 import Box from '../Box';
 
-import style from './PreviewWidget.st.css';
+import { st, classes } from './PreviewWidget.st.css';
 
 /** Preview content widget*/
 class PreviewWidget extends React.PureComponent {
@@ -14,6 +14,9 @@ class PreviewWidget extends React.PureComponent {
   static propTypes = {
     /** Preview widget data hook*/
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
 
     /** Background skin. To use `custom` skin, set it to custom and use the backgroundColor prop*/
     skin: PropTypes.oneOf(['neutral', 'gradient', 'custom']),
@@ -51,6 +54,7 @@ class PreviewWidget extends React.PureComponent {
       height,
       width,
       children,
+      className,
     } = this.props;
 
     const rootStyles = {
@@ -62,11 +66,11 @@ class PreviewWidget extends React.PureComponent {
 
     return (
       <div
-        {...style('root', { skin, contentOutline }, this.props)}
+        className={st(classes.root, { skin, contentOutline }, className)}
         data-hook={dataHook}
         style={rootStyles}
       >
-        <div data-hook={dataHooks.contentArea} className={style.contentArea}>
+        <div data-hook={dataHooks.contentArea} className={classes.contentArea}>
           {children}
         </div>
       </div>

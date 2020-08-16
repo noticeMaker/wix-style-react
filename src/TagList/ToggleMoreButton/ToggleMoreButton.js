@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TagListAction from '../TagListAction';
 import Tooltip from '../../Tooltip';
-import styles from '../TagList.st.css';
+import { classes } from '../TagList.st.css';
 
 const ToggleMoreButton = ({
   toggleMoreButton,
@@ -11,7 +11,7 @@ const ToggleMoreButton = ({
   isExpanded,
   dataHook,
 }) => {
-  const { label, tooltipProps, ...props } = toggleMoreButton(
+  const { label, tooltipContent, tooltipProps, ...props } = toggleMoreButton(
     amountOfHiddenTags,
     isExpanded,
   );
@@ -22,9 +22,13 @@ const ToggleMoreButton = ({
     </TagListAction>
   );
 
-  if (tooltipProps) {
+  if (tooltipContent) {
     return (
-      <Tooltip {...tooltipProps} className={styles.item}>
+      <Tooltip
+        content={tooltipContent}
+        className={classes.item}
+        {...tooltipProps}
+      >
         {button}
       </Tooltip>
     );

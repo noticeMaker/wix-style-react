@@ -110,6 +110,7 @@
 .option {
   -st-states: selected, hovered, disabled, title, itemHeight(enum(small, big)), overrideStyle;
   -st-mixin: text-medium-normal;
+  color: value(D10);
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;

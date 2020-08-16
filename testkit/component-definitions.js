@@ -724,7 +724,9 @@ export default {
   FileUpload: {
     props: {
       onChange: () => {},
-      children: <div />,
+      children: ({ openFileUploadDialog }) => (
+        <button onClick={openFileUploadDialog} />
+      ),
     },
   },
 

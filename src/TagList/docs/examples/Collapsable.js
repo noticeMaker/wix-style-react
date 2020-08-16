@@ -14,11 +14,7 @@ class Collapsable extends React.Component {
         maxVisibleTags={3}
         toggleMoreButton={(amountOfHiddenTags, isExpanded) => ({
           label: isExpanded ? 'Show Less' : `+${amountOfHiddenTags} More`,
-          tooltipProps: !isExpanded
-            ? {
-                content: 'Show More',
-              }
-            : undefined,
+          tooltipContent: !isExpanded && 'Show More',
         })}
       />
     );

@@ -7,12 +7,16 @@ import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 
 function tagListWithMandatoryProps() {
-  return <TagList tags={[
-    {
-      id: '1',
-      children: 'Some Tag',
-    },
-  ]} />;
+  return (
+    <TagList
+      tags={[
+        {
+          id: '1',
+          children: 'Some Tag',
+        },
+      ]}
+    />
+  );
 }
 
 function tagListWithAllProps() {
@@ -28,8 +32,12 @@ function tagListWithAllProps() {
       size="medium"
       actionButton={{
         label: 'action',
-        onClick: () => null
+        onClick: () => null,
       }}
+      toggleMoreButton={(amountOfHiddenTags, isExpanded) => ({
+        label: isExpanded ? 'Show Less' : `+${amountOfHiddenTags} More`,
+        tooltipContent: !isExpanded && 'Show More',
+      })}
       onTagRemove={() => {}}
     />
   );
