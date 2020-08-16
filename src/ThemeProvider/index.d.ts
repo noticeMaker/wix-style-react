@@ -1,14 +1,18 @@
 import * as React from 'react';
 
 export interface ThemeInterface {
-  'color-00'?: React.CSSProperties['color'];
-  'color-05'?: React.CSSProperties['color'];
-  'color-10'?: React.CSSProperties['color'];
-  'color-20'?: React.CSSProperties['color'];
-  'color-30'?: React.CSSProperties['color'];
-  'color-40'?: React.CSSProperties['color'];
-  'color-50'?: React.CSSProperties['color'];
-  'color-60'?: React.CSSProperties['color'];
+  color00?: React.CSSProperties['color'];
+  color05?: React.CSSProperties['color'];
+  color10?: React.CSSProperties['color'];
+  color20?: React.CSSProperties['color'];
+  color30?: React.CSSProperties['color'];
+  color40?: React.CSSProperties['color'];
+  color50?: React.CSSProperties['color'];
+  color60?: React.CSSProperties['color'];
+  textColorPrimary?: React.CSSProperties['color'];
+  textColorSecondary?: React.CSSProperties['color'];
+  textColorPrimaryLight?: React.CSSProperties['color'];
+  textColorSecondaryLight?: React.CSSProperties['color'];
 }
 
 export interface ThemeProviderProps {

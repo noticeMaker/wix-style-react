@@ -6,23 +6,12 @@
 :import {
   -st-from: "../TableActionCell/TableActionCell.st.css";
   -st-default: TableActionCell;
-}
-
-.root {
-  -st-states: isRowClickable;
+  -st-named: onHover, notOnHover;
 }
 
 .emptyStateContainer {
   padding: 42px;
   border-top: 1px solid value(D60);
-}
-
-.root:isRowClickable .tableRow {
-  cursor: pointer;
-}
-
-.root:isRowClickable .tableRow:hover td {
-  background-color: value(B50);
 }
 
 .content {

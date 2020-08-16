@@ -29,10 +29,10 @@
   border-radius: 50%;
 }
 
-.arrow :hover:not(:active) {
+.arrow:hover:not(:active) {
   background-color: value(B50);
 }
-.arrow :active {
+.arrow:active {
   background-color: value(B40);
 }
 

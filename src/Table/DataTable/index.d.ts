@@ -38,6 +38,7 @@ export interface DataTableProps<RowData = RowDataDefaultType> {
   selectedRowsIds?: (string | number)[];
   horizontalScroll?: boolean;
   stickyColumns?: number;
+  isRowDisabled?: (rowData: RowData) => boolean;
 }
 
 export default class DataTable<

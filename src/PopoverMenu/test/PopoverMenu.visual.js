@@ -263,6 +263,16 @@ const interactiveTests = [
               onClick={e => console.log(e)}
               skin={'destructive'}
             />,
+            <PopoverMenu.MenuItem
+              text="Dark"
+              onClick={e => console.log(e)}
+              skin={'dark'}
+            />,
+            <PopoverMenu.MenuItem
+              text="Standard"
+              onClick={e => console.log(e)}
+              skin={'standard'}
+            />,
           ],
         },
       },

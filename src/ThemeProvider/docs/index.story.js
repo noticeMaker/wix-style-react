@@ -41,18 +41,21 @@ const colors = [
   '#F4FAFE',
 ];
 const ColorsExample = () => (
-  <Box>
-    {colors.map((color, i) => (
-      <Box
-        marginTop="12px"
-        background={`var(--wsr-color-${i}0, ${color})`}
-        color="black"
-        padding="6px"
-        width="fit-content"
-      >
-        Color {i}0
-      </Box>
-    ))}
+  <Box direction="vertical">
+    Color Palette:
+    <Box>
+      {colors.map((color, i) => (
+        <Box
+          marginTop="12px"
+          background={`var(--wsr-color-${i}0, ${color})`}
+          color="black"
+          padding="6px"
+          width="fit-content"
+        >
+          Color {i}0
+        </Box>
+      ))}
+    </Box>
   </Box>
 );
 
@@ -119,10 +122,20 @@ Important: This is an experimental tool and should not be used in production unl
   theme={{
     color10: '#EE5951',
     color20: '#FF6666',
+    textColorPrimary: '#585dd9',
   }}
 >
-  <ToggleSwitch checked />
-  <ColorsExample />
+  <Layout>
+    <Cell>
+      <ToggleSwitch checked />
+    </Cell>
+    <Cell>
+      <Text>I have a theme!</Text>
+    </Cell>
+    <Cell>
+      <ColorsExample />
+    </Cell>
+  </Layout>
 </ThemeProvider>
             `,
           }),
@@ -132,8 +145,17 @@ Important: This is an experimental tool and should not be used in production unl
             text: 'Using a pre made theme function to generate a theme',
             source: `
 <ThemeProvider theme={Themes.floatingPanels({ mainColor: '#00aa00' })}>
-  <ToggleSwitch checked />
-  <ColorsExample />
+  <Layout>
+    <Cell>
+      <ToggleSwitch checked />
+    </Cell>
+    <Cell>
+      <Text>In this theme I'm #000000 by default!</Text>
+    </Cell>
+    <Cell>
+      <ColorsExample />
+    </Cell>
+  </Layout>
 </ThemeProvider>
             `,
           }),

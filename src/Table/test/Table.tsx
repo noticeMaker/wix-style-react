@@ -30,6 +30,7 @@ function tableWithAllProps() {
       onMouseEnterRow={(_rowData, _rowNum) => {}}
       onMouseLeaveRow={(_rowData, _rowNum) => {}}
       onRowClick={(_rowData, _rowNum) => {}}
+      isRowDisabled={(_rowData) => false}
       onSelectionChanged={(_selectedIds, change) => {}}
       onSortClick={(_colData, colNum) => {}}
       rowClass="class"

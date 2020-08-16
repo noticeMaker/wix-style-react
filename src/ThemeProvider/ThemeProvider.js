@@ -40,6 +40,10 @@ ThemeProvider.propTypes = {
     color40: PropTypes.string,
     color50: PropTypes.string,
     color60: PropTypes.string,
+    textColorPrimary: PropTypes.string,
+    textColorSecondary: PropTypes.string,
+    textColorPrimaryLight: PropTypes.string,
+    textColorSecondaryLight: PropTypes.string,
   }),
 };
 

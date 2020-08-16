@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseUniDriver } from 'wix-ui-test-utils/base-driver';
+import { StatusIndications } from '../common';
 
 export interface TimeInputUniDriver extends BaseUniDriver {
   getValue: () => Promise<string>;
@@ -13,4 +14,8 @@ export interface TimeInputUniDriver extends BaseUniDriver {
   isRtl: () => Promise<boolean>;
   setValue: (text: string) => Promise<void>;
   blur: () => Promise<void>;
+
+  // Status
+  hasStatus: (status: StatusIndications) => Promise<boolean>;
+  getStatusMessage: () => Promise<string | null>;
 }

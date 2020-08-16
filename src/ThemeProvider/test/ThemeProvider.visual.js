@@ -25,7 +25,13 @@ const tests = [
       {
         it: 'Floating Panels',
         props: {
-          theme: floatingPanels({ mainColor: '#ff0000' }),
+          theme: floatingPanels({
+            mainColor: '#ff0000',
+            textColorPrimary: '#009000',
+            textColorPrimaryLight: '#00ff00',
+            textColorSecondary: '#009000',
+            textColorSecondaryLight: '#00d000',
+          }),
         },
       },
     ],

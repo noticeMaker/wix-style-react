@@ -49,6 +49,7 @@ require('../src/DragAndDrop/docs/DragAndDrop');
 require('../src/Dropdown/docs/index.story');
 require('../src/DropdownBase/docs/index.story');
 require('../src/DropdownLayout/docs');
+require('../src/Dropzone/docs/index.story');
 require('../src/EditableSelector/docs/index.story');
 require('../src/EditableTitle/docs/index.story');
 require('../src/EmptyState/docs/index.story');

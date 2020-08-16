@@ -124,4 +124,8 @@
   THEME-COLOR-40: var(--wsr-color-40, value(B40));
   THEME-COLOR-50: var(--wsr-color-50, value(B50));
   THEME-COLOR-60: var(--wsr-color-60, value(B60));
+  THEME-TEXT-COLOR-PRIMARY: var(--wsr-text-color-primary, value(D10));
+  THEME-TEXT-COLOR-PRIMARY-LIGHT: var(--wsr-text-color-primary-light, value(D80));
+  THEME-TEXT-COLOR-SECONDARY: var(--wsr-text-color-secondary, value(D20));
+  THEME-TEXT-COLOR-SECONDARY-LIGHT: var(--wsr-text-color-secondary-light, value(D40));
 }

@@ -1,13 +1,5 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { radioButtonUniDriverFactory } from './RadioButton/RadioButton.uni.driver';
-import { dataHooks } from './constants';
-
-export const createRadioButtonsGetter = (base, body) => async () =>
-  base
-    .$$(`[data-hook="${dataHooks.RadioGroupRadioContainer}"]`)
-    .map(radio =>
-      Object.assign(radio, radioButtonUniDriverFactory(radio, body)),
-    );
+import { createRadioButtonsGetter } from './sharedDriverMethods';
 
 export const radioGroupUniDriverFactory = (base, body) => {
   const getRadioButtons = createRadioButtonsGetter(base, body);

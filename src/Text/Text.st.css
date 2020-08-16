@@ -7,7 +7,8 @@
 
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: B10, B20, D10, D20, D40, D80, D10-30, D80-70, G10, P10, R10;
+  -st-named: B10, B20, D10-30, D80-70, G10, P10, R10,
+             THEME-TEXT-COLOR-PRIMARY, THEME-TEXT-COLOR-PRIMARY-LIGHT, THEME-TEXT-COLOR-SECONDARY, THEME-TEXT-COLOR-SECONDARY-LIGHT;
 }
 
 :vars {
@@ -65,16 +66,16 @@
 /******* Skins *******/
 /* Standard */
 .root:skin(standard) {
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 .root:skin(standard):light {
-  color: value(D80);
+  color: value(THEME-TEXT-COLOR-PRIMARY-LIGHT);
 }
 .root:skin(standard):secondary {
-  color: value(D20);
+  color: value(THEME-TEXT-COLOR-SECONDARY);
 }
 .root:skin(standard):light:secondary {
-  color: value(D40);
+  color: value(THEME-TEXT-COLOR-SECONDARY-LIGHT);
 }
 
 /* Success */
