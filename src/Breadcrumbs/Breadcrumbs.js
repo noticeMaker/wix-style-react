@@ -64,6 +64,7 @@ class Breadcrumbs extends React.PureComponent {
               light={theme === THEMES.onDarkBackground}
               size={isSmallSize ? 'small' : 'medium'}
               secondary={context.active && !isActive}
+              ellipsis
             >
               {value}
             </Text>
