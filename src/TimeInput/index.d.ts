@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { InputStatus } from '../Input';
 
 export interface TimeInputProps {
   dashesWhenDisabled?: boolean;
@@ -13,6 +13,9 @@ export interface TimeInputProps {
   minutesStep?: number;
   width?: 'auto' | '100%';
   customSuffix?: React.ReactNode;
+  status?: InputStatus;
+  hideStatusSuffix?: boolean;
+  statusMessage?: React.ReactNode;
 }
 
 export default class TimeInput extends React.PureComponent<TimeInputProps> {}

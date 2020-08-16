@@ -62,7 +62,7 @@ describe('Accordion', () => {
         expandLabel: 'see more',
         collapseLabel: 'see less',
         buttonType: buttonTypes.button,
-        onHover: jest.fn(),
+        onMouseEnter: jest.fn(),
       },
     ];
 
@@ -75,7 +75,7 @@ describe('Accordion', () => {
         collapseLabel: 'see less',
         buttonType: buttonTypes.button,
         disabled: true,
-        onHover: jest.fn(),
+        onMouseEnter: jest.fn(),
       },
     ];
 
@@ -181,7 +181,7 @@ describe('Accordion', () => {
     it('should notify when hovering an item', async () => {
       const driver = createDriver(<Accordion items={collapsedSingleItem} />);
       await driver.hoverOnItem(0);
-      expect(collapsedSingleItem[0].onHover).toHaveBeenCalled();
+      expect(collapsedSingleItem[0].onMouseEnter).toHaveBeenCalled();
     });
 
     it('should not notify hovering an item when item is disabled', async () => {
@@ -189,7 +189,9 @@ describe('Accordion', () => {
         <Accordion items={collapsedDisabledSingleItem} />,
       );
       await driver.hoverOnItem(0);
-      expect(collapsedDisabledSingleItem[0].onHover).not.toHaveBeenCalled();
+      expect(
+        collapsedDisabledSingleItem[0].onMouseEnter,
+      ).not.toHaveBeenCalled();
     });
 
     it('should allow only a single item to be expanded by default', async () => {

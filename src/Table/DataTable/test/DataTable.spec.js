@@ -339,6 +339,17 @@ describe('Table', () => {
         const driver = createDriver(<DataTable {...props} />);
         expect(await driver.isRowClickable(0)).toBe(true);
       });
+
+      it('should not assign the class to rows when isRowDisabled returns true', async () => {
+        const props = {
+          ...defaultProps,
+          onRowClick: jest.fn(),
+          isRowDisabled: () => true,
+        };
+
+        const driver = createDriver(<DataTable {...props} />);
+        expect(await driver.isRowClickable(0)).toBe(false);
+      });
     });
 
     describe('animatedDataRow class', () => {
@@ -383,6 +394,22 @@ describe('Table', () => {
           await driver[driverMethod](1);
           expect(props[handler]).toHaveBeenLastCalledWith(props.data[1], 1);
         });
+      });
+
+      it(`should not call onRowClick if row is disabled`, async () => {
+        const props = {
+          ...defaultProps,
+          onRowClick: jest.fn(),
+          isRowDisabled: row => row === defaultProps.data[0],
+        };
+
+        const driver = createDriver(<DataTable {...props} />);
+
+        await driver.clickRow(0);
+        expect(props.onRowClick).not.toBeCalledWith(props.data[0], 0);
+
+        await driver.clickRow(1);
+        expect(props.onRowClick).toBeCalledWith(props.data[1], 1);
       });
 
       it('should expand with correct content and collapse', async () => {

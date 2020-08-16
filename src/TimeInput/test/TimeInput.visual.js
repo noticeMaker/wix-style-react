@@ -58,6 +58,8 @@ visualize('TimeInput', () => {
           disableAmPm
           customSuffix={'custom suffix'}
         />
+        <br />
+        <TimeInput defaultValue={value1} status="error" hideStatusSuffix />
       </>
     );
   });

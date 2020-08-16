@@ -13,7 +13,9 @@ describe(FileUpload.displayName, () => {
 
   const fileUploadExample = props => (
     <FileUpload onChange={() => {}} {...props}>
-      <Button>upload file</Button>
+      {({ openFileUploadDialog }) => (
+        <Button onClick={openFileUploadDialog}>upload file</Button>
+      )}
     </FileUpload>
   );
 

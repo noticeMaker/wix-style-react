@@ -24,6 +24,84 @@ describe(TagList.displayName, () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should not show toggle more button', async () => {
+    const { driver } = render(
+      <TagList
+        tags={[
+          {
+            id: '1',
+            children: 'Some Tag',
+          },
+        ]}
+      />,
+    );
+
+    expect(await driver.toggleMoreButtonExists()).toBe(false);
+  });
+
+  it('should show toggle more button when prop is passed', async () => {
+    const { driver } = render(
+      <TagList
+        tags={[
+          {
+            id: '1',
+            children: 'Some Tag',
+          },
+          {
+            id: '2',
+            children: 'Tag 2',
+          },
+          {
+            id: '3',
+            children: 'Tag 3',
+          },
+          {
+            id: '4',
+            children: 'Tag 4',
+          },
+        ]}
+        toggleMoreButton={(amountOfHiddenTags, isExpanded) => ({
+          label: isExpanded ? 'Show Less' : `+${amountOfHiddenTags} More`,
+          tooltipContent: !isExpanded && 'Show More',
+        })}
+      />,
+    );
+
+    expect(await driver.toggleMoreButtonExists()).toBe(true);
+  });
+
+  it('should click toggle more button', async () => {
+    const { driver } = render(
+      <TagList
+        tags={[
+          {
+            id: '1',
+            children: 'Some Tag',
+          },
+          {
+            id: '2',
+            children: 'Tag 2',
+          },
+          {
+            id: '3',
+            children: 'Tag 3',
+          },
+          {
+            id: '4',
+            children: 'Tag 4',
+          },
+        ]}
+        toggleMoreButton={(amountOfHiddenTags, isExpanded) => ({
+          label: isExpanded ? 'Show Less' : `+${amountOfHiddenTags} More`,
+          tooltipContent: !isExpanded && 'Show More',
+        })}
+      />,
+    );
+    expect(await driver.toggleMoreButtonLabel()).toEqual('+1 More');
+    await driver.clickToggleMoreButton();
+    expect(await driver.toggleMoreButtonLabel()).toEqual('Show Less');
+  });
+
   it('should not show action button', async () => {
     const { driver } = render(
       <TagList

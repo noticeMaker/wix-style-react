@@ -34,6 +34,8 @@ const timeInputDriverFactory = ({ element }) => {
     isRtl: () => !!element.querySelector(`.${styles.rtl}`),
     setValue: value => input().enterText(value),
     blur: () => input().blur(),
+    hasStatus: status => input().hasStatus(status),
+    getStatusMessage: () => input().getStatusMessage(),
   };
 };
 export default timeInputDriverFactory;

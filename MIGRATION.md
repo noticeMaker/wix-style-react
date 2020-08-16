@@ -1,3 +1,8 @@
+# `wix-style-react` v9 Migration Guide
+This release upgrades Stylable version to 3.
+
+We decided to release this change as a major version although there are **no** breaking changes in any component API from 8 to 9!
+
 # `wix-style-react` v8 Migration Guide
 
 This guide will help to migrate `wix-style-react` from v7 to v8.
@@ -65,7 +70,7 @@ This is the recommended migration flow. Each step is described in more detail be
 
 1. Change from `PopoverMenu` to the `PopoverMenu` which is stated as `PopoverMenuNext` - it becomes the official `PopoverMenu` in wsr8.
 1. Change of all input/selection family components to "status message" standard by using `status` and `statusMessage` instead of `error` and `errorMessage`.
-1. Handle all other general changes as mentioned below. Just serach in your code for each component and apply the changes
+1. Handle all other general changes as mentioned below. Just search in your code for each component and apply the changes
 
 ---
 
@@ -157,7 +162,7 @@ npx wix-ui-codemod wix-style-react/migrate-wsr8 <path-to-your-project>
     - `<FooterLayout1/>`,
     - `<MessageBoxLayout2/>`,
     - `<MessageBoxLayout1/>`
-    
+
 6. `<DateInput/>` component which was under _WIP (Work In Progress)_ was removed. Use `<DatePicker/>` instead.
 
 ### API Changes for big components

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './BaseModalLayout.st.css';
+import { st, classes } from './BaseModalLayout.st.css';
 import { dataHooks } from './constants';
 import CloseButton from '../CloseButton';
 import Help from 'wix-ui-icons-common/system/Help24';
@@ -16,11 +16,11 @@ import {
 import Box from '../Box';
 
 const classNames = {
-  headerClassName: styles.header,
-  contentClassName: styles.content,
-  footerClassName: styles.footer,
-  footnoteClassName: styles.footnote,
-  illustrationClassName: styles.illustration,
+  headerClassName: classes.header,
+  contentClassName: classes.content,
+  footerClassName: classes.footer,
+  footnoteClassName: classes.footnote,
+  illustrationClassName: classes.illustration,
 };
 
 /** Private component to be used by all public modals. Represents the common internals of all modals */
@@ -51,14 +51,7 @@ class BaseModalLayout extends React.PureComponent {
         data-hook={dataHook}
         data-theme={theme}
         style={style}
-        {...styles(
-          'root',
-          {
-            theme,
-            controlButtonAmount,
-          },
-          { className, ...restProps },
-        )}
+        className={st(classes.root, { theme, controlButtonAmount }, className)}
       >
         <BaseModalLayoutContext.Provider
           value={{ ...restProps, ...classNames }}
@@ -69,7 +62,7 @@ class BaseModalLayout extends React.PureComponent {
           <Box
             gap="SP1"
             direction="horizontal"
-            className={styles.controlButtons}
+            className={classes.controlButtons}
           >
             {onHelpButtonClick && (
               <CloseButton
@@ -78,12 +71,13 @@ class BaseModalLayout extends React.PureComponent {
                 size="large"
                 skin="dark"
               >
-                <Help className={styles.helpIcon} />
+                <Help className={classes.helpIcon} />
               </CloseButton>
             )}
             {onCloseButtonClick && (
               <CloseButton
                 dataHook={dataHooks.closeButton}
+                className={classes.closeButton}
                 onClick={onCloseButtonClick}
                 size="large"
                 skin="dark"

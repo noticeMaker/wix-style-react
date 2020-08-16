@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactCollapse from 'react-collapse';
+import './Collapse.st.css';
 
 /** `<Collapse/>` component is used for hideable content.
  *

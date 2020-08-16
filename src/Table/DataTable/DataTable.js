@@ -225,8 +225,8 @@ class DataTable extends React.Component {
   );
 
   onRowClick = (rowData, rowNum) => {
-    const { onRowClick, rowDetails } = this.props;
-    onRowClick && onRowClick(rowData, rowNum);
+    const { onRowClick, rowDetails, isRowDisabled } = this.props;
+    onRowClick && !isRowDisabled(rowData) && onRowClick(rowData, rowNum);
     rowDetails && this.toggleRowDetails(rowData);
   };
 
@@ -243,6 +243,7 @@ class DataTable extends React.Component {
       columns,
       selectedRowsIds,
       isRowSelected,
+      isRowDisabled,
     } = this.props;
     const rowClasses = [rowClass];
     const key = defaultTo(rowData.id, rowNum);
@@ -265,7 +266,7 @@ class DataTable extends React.Component {
       }
     });
 
-    if (onRowClick) {
+    if (onRowClick && !isRowDisabled(rowData)) {
       rowClasses.push(this.style.clickableDataRow);
     }
 
@@ -626,6 +627,7 @@ DataTable.defaultProps = {
   skin: 'standard',
   horizontalScroll: false,
   stickyColumns: 0,
+  isRowDisabled: () => false,
 };
 
 DataTable.propTypes = {
@@ -741,6 +743,8 @@ DataTable.propTypes = {
   ),
   /** A callback function called on each column title click. Signature `onSortClick(colData, colNum)` */
   onSortClick: PropTypes.func,
+  /** a function which will be called for every row in `data` to specify if it should appear as disabled. Example: `isRowDisabled={(rowData) => !rowData.isEnabled}` */
+  isRowDisabled: PropTypes.func,
 
   /* Horizontal scroll support props. */
   horizontalScroll: PropTypes.bool,

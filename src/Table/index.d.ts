@@ -93,4 +93,5 @@ export type UsedDataTableProps<RowData = RowDataDefaultType> = Pick<
   | 'data'
   | 'horizontalScroll'
   | 'stickyColumns'
+  | 'isRowDisabled'
 >;

@@ -35,13 +35,10 @@ yarn add wix-style-react
 
 ## 🔨 Setup
 
-If 🐉yoshi build runner is used for your application then all required loaders are already defined. If you'd rather set up your project manually, take a look at our [webpack guide](https://github.com/wix/wix-style-react/blob/master/docs/usage-without-yoshi.md).
+wix-style-react is built with [Stylable](https://stylable.io/), therefore we recommend you build your project using a **Stylable compatible** template in order to save some configurations.
+Take a look at our usage guide [Create Stylable App](https://github.com/wix/wix-style-react/blob/master/docs/usage/usage-with-create-stylable-app.md) to create a new Stylable project from a boilerplate.
 
-Minimal Yoshi version to be used with wix-style-react:
-
-`Version 4 - ^4.1.0`
-
-`Version 3 - ^3.31.2`
+#### How to load wix-style-react compatible fonts:
 
 Load Wix fonts from CDN:<br/>
 - For Madefor font please visit [wix-fonts](https://wix-fonts.now.sh/).
@@ -75,13 +72,14 @@ Make sure that react and react-dom versions are not higher then:
 
 **Read and follow our migration guides:**
 
-- From 7.x to 8.x read [V8 migration guide](https://github.com/wix/wix-style-react/blob/master/MIGRATION.md)
+- From 7.x to 8.x/9.x read [V8/V9 migration guide](https://github.com/wix/wix-style-react/blob/master/MIGRATION.md)
 - From 6.x to 7.x read [V7 migration guide](https://github.com/wix/wix-style-react/blob/version_7.x/docs/migration/v6-v7.md)
 - From 5.x to 6.x read [V6 migration guide](https://github.com/wix/wix-style-react/blob/version_7.x/docs/migration/v5-v6.md)
 - From 4.x to 5.x read [V5 migration guide](https://github.com/wix/wix-style-react/blob/version_7.x/docs/migration/v4-v5.md)
 
 **Older version Storybook:**
 
+- [V8 Storybook](https://www.wix.com/pages/wix-style-react-v8/)
 - [V7 Storybook](https://wix-style-react-v7.now.sh)
 - [V6 Storybook](https://wix-wix-style-react-v6.surge.sh/)
 
