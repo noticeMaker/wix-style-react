@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import styles from './TestimonialList.st.css';
+import { st, classes } from './TestimonialList.st.css';
 import { dataHooks } from './constants';
 
 /** TestimonialList is a group of layouts that display avatar, description and name. It's used in a footer of a marketing page layout. */
@@ -12,7 +12,7 @@ class TestimonialList extends React.PureComponent {
 
     return (
       <div
-        {...styles('root', {}, className)}
+        className={st(classes.root, className)}
         data-hook={dataHook}
         style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
@@ -33,18 +33,18 @@ class TestimonialList extends React.PureComponent {
 }
 
 const TestimonialItem = ({ index, avatar, text, authorName }) => (
-  <div className={styles.testimonialItem} data-hook="testimonial">
+  <div className={classes.testimonialItem} data-hook="testimonial">
     {avatar && (
       <div
-        className={styles.testimonialItemAvatar}
+        className={classes.testimonialItemAvatar}
         data-hook={`${dataHooks.testimonialAvatar}${index}`}
       >
         {avatar}
       </div>
     )}
-    <div className={styles.testimonialItemTextArea}>
+    <div className={classes.testimonialItemTextArea}>
       {text && (
-        <div className={styles.testimonialItemText}>
+        <div className={classes.testimonialItemText}>
           <Text data-hook={`${dataHooks.testimonialText}${index}`} size="small">
             {text}
           </Text>
