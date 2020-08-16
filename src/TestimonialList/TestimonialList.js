@@ -45,14 +45,14 @@ const TestimonialItem = ({ index, avatar, text, authorName }) => (
     <div className={classes.testimonialItemTextArea}>
       {text && (
         <div className={classes.testimonialItemText}>
-          <Text data-hook={`${dataHooks.testimonialText}${index}`} size="small">
+          <Text dataHook={`${dataHooks.testimonialText}${index}`} size="small">
             {text}
           </Text>
         </div>
       )}
       {authorName && (
         <Text
-          data-hook={`${dataHooks.testimonialAuthorName}${index}`}
+          dataHook={`${dataHooks.testimonialAuthorName}${index}`}
           size="small"
           weight="bold"
         >
