@@ -7,6 +7,8 @@
   width: 100%;
   display: grid;
   justify-content: center;
+  --cols: 3;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   grid-gap: value(spacing30);
 }
 

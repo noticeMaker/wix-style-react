@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { Layout, Cell } from '../Layout';
 import { isString } from '../utils/StringUtils';
 
-import { st, classes } from './FeatureList.st.css';
+import { st, classes, vars } from './FeatureList.st.css';
 import { dataHooks } from './constants';
 
 /** A footer for the marketing Page Layout */
@@ -14,10 +13,11 @@ class FeatureList extends React.PureComponent {
     const { dataHook, className, features, cols } = this.props;
 
     return (
-      <Layout
+      <div
         className={st(classes.root, className)}
-        dataHook={dataHook}
-        cols={cols}
+        data-hook={dataHook}
+        // Using CSS variable
+        style={{ [vars.cols]: cols }}
       >
         {features.map((featureItem, index) => {
           return (
@@ -31,7 +31,7 @@ class FeatureList extends React.PureComponent {
             />
           );
         })}
-      </Layout>
+      </div>
     );
   }
 }
