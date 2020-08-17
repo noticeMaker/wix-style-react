@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { Layout } from '../Layout';
 
-import { st, classes } from './TestimonialList.st.css';
+import { st, classes, vars } from './TestimonialList.st.css';
 import { dataHooks } from './constants';
 
 /** TestimonialList is a group of layouts that display avatar, description and name. It's used in a footer of a marketing page layout. */
@@ -13,11 +12,11 @@ class TestimonialList extends React.Component {
     const { className, dataHook, testimonials, cols } = this.props;
 
     return (
-      <Layout
+      <div
         className={st(classes.root, className)}
-        dataHook={dataHook}
-        cols={cols}
-        gap={30}
+        data-hook={dataHook}
+        // Using CSS variable
+        style={{ [vars.cols]: cols }}
       >
         {testimonials.map((testimonialItem, index) => {
           return (
@@ -31,7 +30,7 @@ class TestimonialList extends React.Component {
             />
           );
         })}
-      </Layout>
+      </div>
     );
   }
 }
