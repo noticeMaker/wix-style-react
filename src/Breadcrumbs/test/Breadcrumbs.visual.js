@@ -88,7 +88,7 @@ const tests = [
             {
               id: 2,
               value:
-                'This is a very very very very long text that will *not* be cropped by ellipsis at some point',
+                'This is a very very very very long text that will be cropped by ellipsis at some point',
             },
           ],
         },
