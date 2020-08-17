@@ -67,7 +67,7 @@ const getMatchesInString = (str, prefix, suffix) => {
   const escPrefix = _escapeRegExp(prefix);
   const escSuffix = _escapeRegExp(suffix);
 
-  const pattern = `(?:${escPrefixFirstChar})*${escPrefix}(.*?)${escSuffix}`;
+  const pattern = `(?:${escPrefixFirstChar})*(${escPrefix}(.*?)${escSuffix})`;
   const regex = new RegExp(pattern, 'g');
   let part;
   const parts = [];
@@ -121,7 +121,7 @@ const stringToContentState = ({
     let indexOffset = 0;
     const entityRanges = [];
     getMatchesInString(row, prefix, suffix).forEach(match => {
-      const [placeholder, value] = match;
+      const [, placeholder, value] = match;
       const text = variableParser(value) || false;
       if (text) {
         const contentPlaceholder = ` ${text} `;

@@ -105,7 +105,7 @@ describe('EditorUtilities', () => {
       expect(parts).toHaveLength(1);
 
       const onePart = parts[0];
-      const [variable, text] = onePart;
+      const [, variable, text] = onePart;
       expect(variable).toEqual(prefix + variableEntity.value + suffix);
       expect(text).toEqual(variableEntity.value);
       expect(onePart.index).toEqual(12);
@@ -119,10 +119,10 @@ describe('EditorUtilities', () => {
       expect(parts).toHaveLength(1);
 
       const onePart = parts[0];
-      const [variable, text] = onePart;
+      const [, variable, text] = onePart;
       expect(variable).toEqual(prefix + variableEntity.value + suffix);
       expect(text).toEqual(variableEntity.value);
-      expect(onePart.index).toEqual(13);
+      expect(onePart.index).toEqual(12);
     });
   });
   describe('moveToEdge', () => {
