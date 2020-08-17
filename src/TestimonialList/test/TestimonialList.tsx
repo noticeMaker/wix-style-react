@@ -16,19 +16,16 @@ function testimonialListWithAllProps() {
       dataHook="dataHook"
       testimonials={[
         {
-          id: '0001',
           avatar: <div />,
           text: 'I love it! This product is exactly what I needed.',
           authorName: 'Guy in glasses'
         },
         {
-          id: '0002',
           avatar: <div />,
           text: 'Amazing! It helped me to solve my problems.',
           authorName: 'Person with a hat'
         },
         {
-          id: '0003',
           avatar: <div />,
           text: 'A perfect tool for my every day tasks.',
           authorName: 'Smiling lady'
