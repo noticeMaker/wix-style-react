@@ -7,21 +7,18 @@ import {
   importExample,
   title,
   divider,
-  example as baseExample,
   code as baseCode,
-  playground,
-  api,
-  testkit,
 } from 'wix-storybook-utils/Sections';
 
-import { storySettings } from './storySettings';
+import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 
 import TableToolbar from '..';
-import { THEMES } from '../../Notification/constants';
+import API from '!raw-loader!./README.md';
+import Box from '../../Box';
+import SectionHelper from '../../SectionHelper';
 
-const example = config => baseExample({ components: allComponents, ...config });
 const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
@@ -52,8 +49,17 @@ export default {
           description({
             title: 'Description',
             text:
-              'This line here should briefly describe component in just a sentence or two. It should be short and easy to read.',
+              "TableToolbar is a (dumb) layout component for creating the Table's Toolbar.\n" +
+              ' It supports one line of items, divided into 2 groups according to alignment.',
           }),
+
+          <Box marginBottom="50px">
+            <SectionHelper
+              appearance="danger"
+              title="Note"
+              children="The white background is not part of the Toolbar, it is coming from tha `<Card/>` which the Table sits in."
+            />
+          </Box>,
 
           importExample("import { TableToolbar } from 'wix-style-react';"),
 
@@ -70,9 +76,14 @@ export default {
       }),
 
       ...[
-        { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        {
+          title: 'API',
+          sections: [
+            description({
+              text: API,
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

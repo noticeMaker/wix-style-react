@@ -46,3 +46,25 @@ export const simpleExample = `
       </TableToolbar>
     </Card>
 `;
+
+export const bulkActionsToolbarExample = `
+    <TableToolbar>
+      <TableToolbar.ItemGroup position="start">
+        <TableToolbar.Item>
+          <TableToolbar.SelectedCount>
+            12
+          </TableToolbar.SelectedCount>
+        </TableToolbar.Item>
+      </TableToolbar.ItemGroup>
+      <TableToolbar.ItemGroup position="end">
+        <TableToolbar.Item layout="button">
+          <Button
+            onClick={() => {}}
+            skin="light"
+          >
+            List
+          </Button>
+        </TableToolbar.Item>
+      </TableToolbar.ItemGroup>
+    </TableToolbar>
+`;
