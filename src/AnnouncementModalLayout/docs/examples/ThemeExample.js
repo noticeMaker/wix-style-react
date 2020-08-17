@@ -11,6 +11,7 @@ class ThemeExample extends React.Component {
         primaryButtonText="Upgrade"
         linkText="Learn More"
         onCloseButtonClick={() => {}}
+        onHelpButtonClick={() => {}}
       >
         <Text>
           Upgrade your site with a business and ecommerce premium plan to start

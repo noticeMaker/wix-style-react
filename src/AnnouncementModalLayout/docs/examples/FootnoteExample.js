@@ -10,6 +10,7 @@ class FootnoteExample extends React.Component {
         linkText="Learn More"
         title="Import Posts From WordPress"
         onCloseButtonClick={() => {}}
+        onHelpButtonClick={() => {}}
         footnote={
           <Text size="small">
             By sending an invite, you agree to the <a>Wix Terms of Use</a>

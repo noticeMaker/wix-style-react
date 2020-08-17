@@ -46,6 +46,7 @@ export default {
     primaryButtonText: 'Start Now',
     linkText: 'Link',
     onCloseButtonClick: () => {},
+    onHelpButtonClick: () => {},
     illustration: 'generic_upgrade.svg',
   },
 

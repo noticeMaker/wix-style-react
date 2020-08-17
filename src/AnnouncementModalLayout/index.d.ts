@@ -6,7 +6,8 @@ export interface AnnouncementModalLayoutProps {
   className?: string;
   dataHook?: string;
   theme?: 'standard' | 'premium';
-  onCloseButtonClick?(): void;
+  onCloseButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onHelpButtonClick?: React.MouseEventHandler<HTMLButtonElement>;
   title?: string;
   subtitle?: string;
   content?: string | React.ReactNode;

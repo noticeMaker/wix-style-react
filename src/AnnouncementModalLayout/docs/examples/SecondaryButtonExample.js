@@ -10,6 +10,7 @@ class SecondaryButtonExample extends React.Component {
         primaryButtonText="Start Now"
         secondaryButtonText="Skip"
         onCloseButtonClick={() => {}}
+        onHelpButtonClick={() => {}}
       >
         <Text>
           Your public posts, images and videos will be copied and added to your

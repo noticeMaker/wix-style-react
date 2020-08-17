@@ -5,6 +5,7 @@ import { BASE64_IMAGE } from './data/base64Image';
 
 const commonProps = {
   onCloseButtonClick: () => {},
+  onHelpButtonClick: () => {},
   title: 'All Your Info In One Place',
   children: 'Meet your brand new General Info page.',
   primaryButtonText: 'Start Now',

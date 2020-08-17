@@ -9,6 +9,7 @@ class NoIllustrationExample extends React.Component {
         primaryButtonText="Leave"
         linkText="Learn More"
         onCloseButtonClick={() => {}}
+        onHelpButtonClick={() => {}}
       >
         <Text>
           Meet your brand new General Info page.
