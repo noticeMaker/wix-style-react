@@ -192,8 +192,6 @@ export default class ModalSelectorLayout extends React.PureComponent {
       emptyState,
       noResultsFoundStateFactory,
       withSearch,
-      height,
-      maxHeight,
       searchDebounceMs,
       onCancel,
       onOk,
@@ -215,12 +213,13 @@ export default class ModalSelectorLayout extends React.PureComponent {
     } = this.state;
 
     const enabledItems = this._getEnabledItems(selectedItems);
+    const heights = this._calcHeights();
 
     return (
       <CustomModalLayout
-        data-hook={dataHook}
+        dataHook={dataHook}
         showHeaderDivider
-        style={{ height, maxHeight, width: '600px' }}
+        width="600px"
         title={title}
         onCloseButtonClick={onClose}
         secondaryButtonOnClick={onCancel}
@@ -235,18 +234,17 @@ export default class ModalSelectorLayout extends React.PureComponent {
         sideActions={
           sideActions ? sideActions : multiple && this._renderFooterSelector()
         }
+        subtitle={subtitle}
         removeContentPadding
       >
-        {isLoaded && !isEmpty && (
-          <div className={css.subheaderWrapper}>
-            {subtitle && (
-              <div className={css.subtitleWrapper}>
-                <Text dataHook={dataHooks.subtitle}>{subtitle}</Text>
-              </div>
-            )}
-
-            {withSearch && (
-              <div className={css.searchWrapper}>
+        <div
+          style={{ height: heights.height, maxHeight: heights.maxHeight }}
+          className={css.modalBody}
+          data-hook={dataHooks.modalBody}
+        >
+          {isLoaded && !isEmpty && (
+            <div className={css.subheaderWrapper}>
+              {withSearch && (
                 <Search
                   dataHook={dataHooks.search}
                   placeholder={searchPlaceholder}
@@ -255,12 +253,9 @@ export default class ModalSelectorLayout extends React.PureComponent {
                   debounceMs={searchDebounceMs}
                   value={searchValue}
                 />
-              </div>
-            )}
-          </div>
-        )}
-
-        <div className={css.modalBody} data-hook={dataHooks.modalBody}>
+              )}
+            </div>
+          )}
           {((items.length === 0 && !isLoaded) || isSearching) && (
             <div className={css.mainLoaderWrapper}>
               <Loader size="medium" dataHook={dataHooks.mainLoader} />
@@ -303,6 +298,33 @@ export default class ModalSelectorLayout extends React.PureComponent {
       </CustomModalLayout>
     );
   }
+
+  _calcHeights = () => {
+    const { maxHeight, height, withSearch, subtitle } = this.props;
+    const searchHeight = withSearch ? '78px' : '0px';
+    const headerHeight = subtitle ? '105px' : '81px';
+
+    return {
+      height:
+        'calc( calc( calc( ' +
+        height +
+        ' - ' +
+        searchHeight +
+        ' ) - ' +
+        headerHeight +
+        ' ) - ' +
+        '93px )',
+      maxHeight:
+        'calc( calc( calc( ' +
+        maxHeight +
+        ' - ' +
+        searchHeight +
+        ' ) - ' +
+        headerHeight +
+        ' ) - ' +
+        '93px )',
+    };
+  };
 
   _renderItems() {
     const { items, selectedItems } = this.state;
