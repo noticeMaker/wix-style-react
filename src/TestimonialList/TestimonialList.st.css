@@ -4,10 +4,10 @@
 }
 
 .root {
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  grid-gap: value(spacing30);
+  /*width: 100%;*/
+  /*display: grid;*/
+  /*justify-content: center;*/
+  /*grid-gap: value(spacing30);*/
 }
 
 .testimonialItem {

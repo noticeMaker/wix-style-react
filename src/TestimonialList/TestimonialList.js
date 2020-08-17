@@ -8,15 +8,16 @@ import { st, classes } from './TestimonialList.st.css';
 import { dataHooks } from './constants';
 
 /** TestimonialList is a group of layouts that display avatar, description and name. It's used in a footer of a marketing page layout. */
-class TestimonialList extends React.PureComponent {
+class TestimonialList extends React.Component {
   render() {
     const { className, dataHook, testimonials, cols } = this.props;
 
     return (
       <Layout
         className={st(classes.root, className)}
-        data-hook={dataHook}
+        dataHook={dataHook}
         cols={cols}
+        gap={30}
       >
         {testimonials.map((testimonialItem, index) => {
           return (
