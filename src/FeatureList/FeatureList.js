@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { Layout } from '../Layout';
+import { Layout, Cell } from '../Layout';
 import { isString } from '../utils/StringUtils';
 
 import { st, classes } from './FeatureList.st.css';
@@ -16,7 +16,7 @@ class FeatureList extends React.PureComponent {
     return (
       <Layout
         className={st(classes.root, className)}
-        data-hook={dataHook}
+        dataHook={dataHook}
         cols={cols}
       >
         {features.map((featureItem, index) => {
