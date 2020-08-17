@@ -6,6 +6,7 @@ import { dataHooks, size } from './constants';
 
 import Text, { SIZES as TEXT_SIZES } from '../Text';
 import Heading, { APPEARANCES } from '../Heading';
+import Box from '../Box';
 import { isString } from '../utils/StringUtils';
 
 const sizesMap = {
@@ -47,11 +48,8 @@ class MarketingPageLayoutContent extends React.PureComponent {
         className={st(classes.root, { size }, className)}
       >
         {overline && (
-          <div
-            data-hook={dataHooks.overlineContainer}
-            className={classes.overlineContainer}
-          >
-            <div className={classes.overlineTextContainer}>
+          <div data-hook={dataHooks.overlineContainer}>
+            <Box marginBottom="17px">
               {isString(overline) ? (
                 <Text
                   dataHook={dataHooks.overline}
@@ -62,15 +60,12 @@ class MarketingPageLayoutContent extends React.PureComponent {
               ) : (
                 overline
               )}
-            </div>
+            </Box>
             <div className={classes.overlineDivider} />
           </div>
         )}
         {title && (
-          <div
-            data-hook={dataHooks.titleContainer}
-            className={classes.titleContainer}
-          >
+          <Box data-hook={dataHooks.titleContainer}>
             {isString(title) ? (
               <Heading
                 dataHook={dataHooks.title}
@@ -81,13 +76,10 @@ class MarketingPageLayoutContent extends React.PureComponent {
             ) : (
               title
             )}
-          </div>
+          </Box>
         )}
         {subtitle && (
-          <div
-            data-hook={dataHooks.subtitleContainer}
-            className={classes.subtitleContainer}
-          >
+          <Box data-hook={dataHooks.subtitleContainer} marginTop={2}>
             {isString(subtitle) ? (
               <Heading
                 dataHook={dataHooks.subtitle}
@@ -98,13 +90,10 @@ class MarketingPageLayoutContent extends React.PureComponent {
             ) : (
               subtitle
             )}
-          </div>
+          </Box>
         )}
         {content && (
-          <div
-            data-hook={dataHooks.contentContainer}
-            className={classes.contentContainer}
-          >
+          <Box data-hook={dataHooks.contentContainer} marginTop={4} color="D10">
             {isString(content) ? (
               <Text dataHook={dataHooks.content} size={sizesMap.content[size]}>
                 {content}
@@ -112,14 +101,10 @@ class MarketingPageLayoutContent extends React.PureComponent {
             ) : (
               content
             )}
-          </div>
+          </Box>
         )}
         {actions && (
-          <div
-            data-hook={dataHooks.actions}
-            className={classes.actions}
-            children={actions}
-          />
+          <Box data-hook={dataHooks.actions} marginTop={7} children={actions} />
         )}
       </div>
     );

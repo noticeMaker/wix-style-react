@@ -1,43 +1,18 @@
 :import {
   -st-from: "../Foundation/stylable/spacing.st.css";
-  -st-named: spacing06, spacing12, spacing24, spacing30, spacing42;
+  -st-named: spacing12;
 }
 
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D10, D60;
+  -st-named: D60;
 }
 
 .root {
-}
-
-.overlineContainer {
-}
-
-.overlineTextContainer {
-  margin-bottom: 17px;
 }
 
 .overlineDivider {
   width: 36px;
   border-bottom: solid value(D60) 1px;
   margin-bottom: value(spacing12);
-}
-
-.titleContainer {
-
-}
-
-.subtitleContainer {
-  margin-top: value(spacing12);
-}
-
-.contentContainer {
-  margin-top: value(spacing24);
-  color: value(D10);
-}
-
-
-.actions {
-  margin-top: value(spacing42);
 }
