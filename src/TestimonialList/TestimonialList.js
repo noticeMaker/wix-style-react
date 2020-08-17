@@ -22,7 +22,7 @@ class TestimonialList extends React.PureComponent {
           return (
             <TestimonialItem
               key={`testimonial${index}`}
-              dataHook="testimonial"
+              dataHook={dataHooks.testimonial}
               index={index}
               avatar={testimonialItem.avatar}
               authorName={testimonialItem.authorName}
