@@ -45,5 +45,5 @@ Applies "selected count" font styling to it's children.
 
 ## Styling guidelines
 
-- `<Button/>` components  should have `theme="light"`
+- `<Button/>` components  should have `skin="light"`
 - `<Dropdown/>` : should have rounded corners (add `roundInput` prop). Same with other types of Input components.
