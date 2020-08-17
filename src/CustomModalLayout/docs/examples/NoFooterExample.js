@@ -11,6 +11,7 @@ class NoFooterExample extends React.Component {
           subtitle="Subtitle"
           footnote="footnote"
           onCloseButtonClick={() => {}}
+          onHelpButtonClick={() => {}}
         >
           <Text>
             If you leave now, changes you have made here won't be saved. Are you

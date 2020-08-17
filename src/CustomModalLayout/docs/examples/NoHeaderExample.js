@@ -8,9 +8,10 @@ class NoHeaderExample extends React.Component {
       <Box>
         <CustomModalLayout
           onCloseButtonClick={() => {}}
+          onHelpButtonClick={() => {}}
           primaryButtonText="Save"
           secondaryButtonText="Cancel"
-          sideActions={(<Checkbox>Checkbox</Checkbox>)}
+          sideActions={<Checkbox>Checkbox</Checkbox>}
           footnote="footnote"
         >
           <Text>

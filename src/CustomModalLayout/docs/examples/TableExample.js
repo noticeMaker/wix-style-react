@@ -26,6 +26,7 @@ class TableExample extends React.Component {
           primaryButtonText="Save"
           secondaryButtonText="Cancel"
           onCloseButtonClick={() => {}}
+          onHelpButtonClick={() => {}}
           title="Create New Coupon"
           subtitle="Make customers come back to your store with coupons"
           sideActions={<Checkbox>I agree to Wix terms of use</Checkbox>}

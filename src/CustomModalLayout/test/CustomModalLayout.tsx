@@ -17,6 +17,7 @@ function customModalLayoutWithAllProps() {
       dataHook="dh"
       theme="standard"
       onCloseButtonClick={() => {}}
+      onHelpButtonClick={() => {}}
       title="title"
       subtitle="subtitle"
       content={<div />}

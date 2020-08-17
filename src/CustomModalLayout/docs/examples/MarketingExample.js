@@ -16,17 +16,32 @@ class MarketingExample extends React.Component {
     return (
       <>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <Modal isOpen={isModalOpened} onRequestClose={this.closeModal} shouldCloseOnOverlayClick >
-          <CustomModalLayout width="800px" removeContentPadding onCloseButtonClick={this.closeModal}>
+        <Modal
+          isOpen={isModalOpened}
+          onRequestClose={this.closeModal}
+          shouldCloseOnOverlayClick
+        >
+          <CustomModalLayout
+            width="800px"
+            removeContentPadding
+            onCloseButtonClick={this.closeModal}
+            onHelpButtonClick={() => {}}
+          >
             <Card>
               <MarketingLayout
                 title={
-                    <Heading appearance="H2">Wix Unlimited Website Premium Plan</Heading>
+                  <Heading appearance="H2">
+                    Wix Unlimited Website Premium Plan
+                  </Heading>
                 }
                 description={
                   <Box direction="vertical">
-                    <Text weight={"normal"}>Get a customizable website, designed to match the colors and style of your logo.</Text>
-                    <Text weight={"normal"}>The unlimited plan includes:
+                    <Text weight={'normal'}>
+                      Get a customizable website, designed to match the colors
+                      and style of your logo.
+                    </Text>
+                    <Text weight={'normal'}>
+                      The unlimited plan includes:
                       <ul>
                         <li>Free Custom Domain for 1 year</li>
                         <li>Extra storage & unlimited bandwidth</li>
@@ -47,4 +62,3 @@ class MarketingExample extends React.Component {
     );
   }
 }
-

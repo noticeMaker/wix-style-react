@@ -29,6 +29,7 @@ class PageExample extends React.Component {
             secondaryButtonText="Cancel"
             secondaryButtonOnClick={this.closeModal}
             onCloseButtonClick={this.closeModal}
+            onHelpButtonClick={() => {}}
           >
             <Page height="40vh" sidePadding={30}>
               <Page.Content>
