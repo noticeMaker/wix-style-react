@@ -66,7 +66,6 @@ const getMatchesInString = (str, prefix, suffix) => {
   const escPrefixFirstChar = _escapeRegExp(prefix[0]);
   const escPrefix = _escapeRegExp(prefix);
   const escSuffix = _escapeRegExp(suffix);
-
   const pattern = `(?:${escPrefixFirstChar})*(${escPrefix}(.*?)${escSuffix})`;
   const regex = new RegExp(pattern, 'g');
   let part;
