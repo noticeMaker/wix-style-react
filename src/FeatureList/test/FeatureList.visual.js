@@ -6,20 +6,17 @@ import { RTLWrapper } from '../../../stories/utils/RTLWrapper';
 const commonProps = {
   features: [
     {
-      id: '0001',
       image: <img width={60} height={60} />,
       title: 'Remove Wix Ads',
       text:
         "Enjoy a website that's completely your own brand by removing Wix ads.",
     },
     {
-      id: '0002',
       image: <img width={60} height={60} />,
       title: 'Connect a Custom Domain',
       text: 'Get your business found with a custom domain.',
     },
     {
-      id: '0003',
       image: <img width={60} height={60} />,
       title: 'Accept Online Payment',
       text: 'Let your customers and clients pay you online at checkout.',
@@ -40,18 +37,15 @@ const tests = [
         props: {
           features: [
             {
-              id: '0001',
               image: <img width={60} height={60} />,
               text:
                 "Enjoy a website that's completely your own brand by removing Wix ads.",
             },
             {
-              id: '0002',
               image: <img width={60} height={60} />,
               text: 'Get your business found with a custom domain.',
             },
             {
-              id: '0003',
               image: <img width={60} height={60} />,
               text:
                 'Let your customers and clients pay you online at checkout.',
@@ -64,17 +58,14 @@ const tests = [
         props: {
           features: [
             {
-              id: '0001',
               image: <img width={60} height={60} />,
               title: 'Remove Wix Ads',
             },
             {
-              id: '0002',
               image: <img width={60} height={60} />,
               title: 'Connect a Custom Domain',
             },
             {
-              id: '0003',
               image: <img width={60} height={60} />,
               title: 'Accept Online Payment',
             },
@@ -86,18 +77,15 @@ const tests = [
         props: {
           features: [
             {
-              id: '0001',
               title: 'Remove Wix Ads',
               text:
                 "Enjoy a website that's completely your own brand by removing Wix ads.",
             },
             {
-              id: '0002',
               title: 'Connect a Custom Domain',
               text: 'Get your business found with a custom domain.',
             },
             {
-              id: '0003',
               title: 'Accept Online Payment',
               text:
                 'Let your customers and clients pay you online at checkout.',

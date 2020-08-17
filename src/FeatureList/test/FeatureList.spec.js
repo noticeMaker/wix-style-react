@@ -22,20 +22,17 @@ describe(FeatureList.displayName, () => {
       <FeatureList
         features={[
           {
-            id: '0001',
             image: <img width={60} height={60} />,
             title: 'Remove Wix Ads',
             text:
               "Enjoy a website that's completely your own brand by removing Wix ads.",
           },
           {
-            id: '0002',
             image: <img width={60} height={60} />,
             title: 'Connect a Custom Domain',
             text: 'Get your business found with a custom domain.',
           },
           {
-            id: '0003',
             image: <img width={60} height={60} />,
             title: 'Accept Online Payment',
             text: 'Let your customers and clients pay you online at checkout.',
@@ -54,14 +51,12 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: <img width={60} height={60} />,
                 title: 'Remove Wix Ads',
                 text:
                   "Enjoy a website that's completely your own brand by removing Wix ads.",
               },
               {
-                id: '0002',
                 image: <img width={60} height={60} />,
                 title: 'Accept Online Payment',
                 text:
@@ -82,7 +77,6 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: <img width={60} height={60} />,
                 text:
                   "Enjoy a website that's completely your own brand by removing Wix ads.",
@@ -101,14 +95,12 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: <img width={60} height={60} />,
                 title: 'Remove Wix Ads',
                 text:
                   "Enjoy a website that's completely your own brand by removing Wix ads.",
               },
               {
-                id: '0002',
                 image: <img width={60} height={60} />,
                 title: 'Accept Online Payment',
                 text:
@@ -129,7 +121,6 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: <img width={60} height={60} />,
                 title: 'Remove Wix Ads',
               },
@@ -149,7 +140,6 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: imgSrc,
                 title: 'Remove Wix Ads',
                 text:
@@ -171,7 +161,6 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 image: <img src={imgSrc} />,
                 title: 'Remove Wix Ads',
                 text:
@@ -193,7 +182,6 @@ describe(FeatureList.displayName, () => {
           <FeatureList
             features={[
               {
-                id: '0001',
                 title: 'Remove Wix Ads',
                 text:
                   "Enjoy a website that's completely your own brand by removing Wix ads.",

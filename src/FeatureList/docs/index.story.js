@@ -38,7 +38,6 @@ export default {
         label: 'add features',
         value: [
           {
-            id: '0001',
             image: (
               <img src="https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_60,h_60/c78d05b79ede429fb77c9d8ec4443b93.jpg" />
             ),
@@ -47,7 +46,6 @@ export default {
               "Enjoy a website that's completely your own brand by removing Wix ads.",
           },
           {
-            id: '0002',
             image: (
               <img src="https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_60,h_60/c78d05b79ede429fb77c9d8ec4443b93.jpg" />
             ),
@@ -55,7 +53,6 @@ export default {
             text: 'Get your business found with a custom domain.',
           },
           {
-            id: '0003',
             image: (
               <img src="https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_60,h_60/c78d05b79ede429fb77c9d8ec4443b93.jpg" />
             ),

@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
+import { Layout } from '../Layout';
+import { isString } from '../utils/StringUtils';
+
 import { st, classes } from './FeatureList.st.css';
 import { dataHooks } from './constants';
-
-const isString = a => typeof a === 'string';
 
 /** A footer for the marketing Page Layout */
 class FeatureList extends React.PureComponent {
@@ -13,15 +14,16 @@ class FeatureList extends React.PureComponent {
     const { dataHook, className, features, cols } = this.props;
 
     return (
-      <div
+      <Layout
         className={st(classes.root, className)}
         data-hook={dataHook}
-        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+        cols={cols}
       >
         {features.map((featureItem, index) => {
           return (
             <FeatureItem
-              key={featureItem.id || `feature${index}`}
+              key={`feature${index}`}
+              dataHook={dataHooks.feature}
               index={index}
               image={featureItem.image}
               title={featureItem.title}
@@ -29,13 +31,13 @@ class FeatureList extends React.PureComponent {
             />
           );
         })}
-      </div>
+      </Layout>
     );
   }
 }
 
-const FeatureItem = ({ index, image, title, text }) => (
-  <div className={classes.featureItem} data-hook={dataHooks.feature}>
+const FeatureItem = ({ dataHook, index, image, title, text }) => (
+  <div className={classes.featureItem} data-hook={dataHook}>
     {image && (
       <div
         className={classes.featureItemImageContainer}
@@ -88,14 +90,12 @@ FeatureList.propTypes = {
 
   /**
    * Array of features
-   *  * `id` - the id of the feature (Each feature must have a unique `id`)
    *  * `image` - the feature image. If given as string, it will be used within `<img/>`. Otherwise can be given as React.Node.
    *  * `title` - the feature title.
    *  * `text` - the feature content.
    */
   features: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
       image: PropTypes.node,
       title: PropTypes.string,
       text: PropTypes.string,

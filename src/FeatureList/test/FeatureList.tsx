@@ -17,19 +17,16 @@ function featureListWithAllProps() {
       className="className"
       features={[
       {
-        id: '0001',
         image: <img alt="alt" />,
         title: 'Remove Wix Ads',
         text: "Enjoy a website that's completely your own brand by removing Wix ads.",
       },
       {
-        id: '0002',
         image: <img alt="alt" />,
         title: 'Connect a Custom Domain',
         text: "Get your business found with a custom domain.",
       },
       {
-        id: '0003',
         image: <img alt="alt" />,
         title: 'Accept Online Payment',
         text: "Let your customers and clients pay you online at checkout.",
