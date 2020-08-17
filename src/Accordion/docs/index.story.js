@@ -94,7 +94,9 @@ export default {
         sections: [
           description(`Component for collapsible content`),
 
-          importExample("import { Accordion } from 'wix-style-react';"),
+          importExample(
+            `import { ${Accordion.displayName} } from 'wix-style-react';`,
+          ),
 
           divider(),
 
@@ -117,7 +119,18 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [testkit()] },
+        {
+          title: 'Testkit',
+          sections: [
+            importExample(`
+import { ${Accordion.displayName}Testkit } from 'wix-style-react/dist/testkit';
+import { ${Accordion.displayName}Testkit } from 'wix-style-react/dist/testkit/enzyme';
+import { ${Accordion.displayName}Testkit } from 'wix-style-react/dist/testkit/puppeteer';
+import { ${Accordion.displayName}Testkit } from 'wix-style-react/dist/testkit/protractor';
+              `),
+            testkit(),
+          ],
+        },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),
