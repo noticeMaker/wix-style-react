@@ -48,7 +48,7 @@ export default {
             <SectionHelper
               appearance="danger"
               title="Note"
-              children="The white background is not part of the Toolbar, it is coming from tha `<Card/>` which the Table sits in."
+              children="The white background is not part of the Toolbar, it is coming from the `<Card/>` which the Table sits in."
             />
           </Box>,
 
