@@ -9,10 +9,14 @@ import { listItemSectionBuilder } from '../ListItemSection';
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
 
 class MultiSelectCheckbox extends InputWithOptions {
+  /** An option value can be either a function or an object:
+   * If it's a function, there's a need to override the it in order to support the select mechanism within the MultiSelectCheckbox itself.
+   * If it's a string, we check which string in order to know which builder to use. We use builders instead of manually override the styles of the DropdownLayout.
+   * */
   createOptions(options) {
     return options.map(option => {
       if (typeof option.value === 'function') {
-        return this._renderOption(option);
+        return this._renderFunctionOption(option);
       } else {
         if (option.value === '-') {
           return listItemSectionBuilder({
@@ -25,13 +29,13 @@ class MultiSelectCheckbox extends InputWithOptions {
             checkbox: true,
             title: option.value,
           });
-          return this._renderOption(builder);
+          return this._renderFunctionOption(builder);
         }
       }
     });
   }
 
-  _renderOption(option) {
+  _renderFunctionOption(option) {
     const value = option.value;
 
     return {
