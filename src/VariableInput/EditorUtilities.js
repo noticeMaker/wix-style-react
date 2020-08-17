@@ -63,16 +63,11 @@ const insertEntity = (editorState, { text, value }) => {
 const _escapeRegExp = text => text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 /** Get variable with given prefix and suffix in the given string */
 const getMatchesInString = (str, prefix, suffix) => {
-  const prefixLastChar = prefix[prefix.length - 1];
+  const escPrefixFirstChar = _escapeRegExp(prefix[0]);
   const escPrefix = _escapeRegExp(prefix);
-  const escPrefixLastChar = _escapeRegExp(prefixLastChar);
   const escSuffix = _escapeRegExp(suffix);
-  /**
-   * Prefix, followed by any text
-   * that doesn't start with the last letter of the prefix,
-   * followed by the suffix
-   */
-  const pattern = `${escPrefix}((?:[^${escPrefixLastChar}].*?)*?)${escSuffix}`;
+
+  const pattern = `(?:${escPrefixFirstChar})*${escPrefix}(.*?)${escSuffix}`;
   const regex = new RegExp(pattern, 'g');
   let part;
   const parts = [];
