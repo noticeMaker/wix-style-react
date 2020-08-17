@@ -18,9 +18,6 @@
   padding: value(spacing36) 0;
   width: 100%;
 }
-.testimonialItem:not(:last-child) {
-  margin-right: value(spacing30);
-}
 
 .testimonialItemAvatar {
   margin-right: value(spacing18);
