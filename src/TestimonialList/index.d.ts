@@ -9,7 +9,6 @@ export interface TestimonialListProps {
 export default class TestimonialList extends React.PureComponent<TestimonialListProps>{}
 
 export type TestimonialType = {
-  id: string | number;
   avatar: React.ReactNode;
   text: string;
   authorName: string;

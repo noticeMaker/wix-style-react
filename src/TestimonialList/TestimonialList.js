@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
+import { Layout } from '../Layout';
+
 import { st, classes } from './TestimonialList.st.css';
 import { dataHooks } from './constants';
 
@@ -11,15 +13,16 @@ class TestimonialList extends React.PureComponent {
     const { className, dataHook, testimonials, cols } = this.props;
 
     return (
-      <div
+      <Layout
         className={st(classes.root, className)}
         data-hook={dataHook}
-        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+        cols={cols}
       >
         {testimonials.map((testimonialItem, index) => {
           return (
             <TestimonialItem
-              key={testimonialItem.id || `testimonial${index}`}
+              key={`testimonial${index}`}
+              dataHook="testimonial"
               index={index}
               avatar={testimonialItem.avatar}
               authorName={testimonialItem.authorName}
@@ -27,13 +30,13 @@ class TestimonialList extends React.PureComponent {
             />
           );
         })}
-      </div>
+      </Layout>
     );
   }
 }
 
-const TestimonialItem = ({ index, avatar, text, authorName }) => (
-  <div className={classes.testimonialItem} data-hook="testimonial">
+const TestimonialItem = ({ index, avatar, text, authorName, dataHook }) => (
+  <div className={classes.testimonialItem} data-hook={dataHook}>
     {avatar && (
       <div
         className={classes.testimonialItemAvatar}
@@ -77,14 +80,12 @@ TestimonialList.propTypes = {
 
   /**
    * Array of testimonials
-   *  * `id` - the id of the testimonial (Each testimonial must have a unique `id`)
    *  * `avatar` - the testimonial avatar image.
    *  * `text` - the testimonial content.
    *  * `authorName` - the testimonial author name.
    */
   testimonials: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
       avatar: PropTypes.node,
       text: PropTypes.string,
       authorName: PropTypes.string,
