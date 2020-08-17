@@ -120,13 +120,14 @@ const stringToContentState = ({
     let indexOffset = 0;
     const entityRanges = [];
     getMatchesInString(row, prefix, suffix).forEach(match => {
-      const [, placeholder, value] = match;
+      const [wholeMatch, placeholder, value] = match;
+      const matchIndex = match.index + wholeMatch.indexOf(placeholder);
       const text = variableParser(value) || false;
       if (text) {
         const contentPlaceholder = ` ${text} `;
         rowStr = rowStr.replace(placeholder, contentPlaceholder);
         entityRanges.push({
-          offset: match.index + indexOffset,
+          offset: matchIndex + indexOffset,
           length: contentPlaceholder.length,
           key: entityIndex,
         });
