@@ -28,15 +28,6 @@ export default {
   component: TableToolbar,
   componentPath: '..',
 
-  componentProps: {
-    buttonText: 'Hello World!',
-  },
-
-  exampleProps: {
-    // Put here presets of props, for more info:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
-  },
-
   sections: [
     header({
       // sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${TableToolbar.displayName}/`,
@@ -71,6 +62,24 @@ export default {
             title: 'Simple Usage',
             compact: true,
             source: examples.simpleExample,
+          }),
+
+          description({
+            title: 'Typical BulkActions Toolbar',
+            text:
+              'The BulkActions Toolbar typically includes actions which act on the current selected rows.\n' +
+              '            It may include (by convention) the following UI component:\n' +
+              '- A selection count (`<TableToolbar.SelectedCount> 2 Selected </TableToolbar.SelectedCount>`)\t\n' +
+              '- Action Buttons (`<Button/>`). All Buttons should have `theme="light"`.\t\n' +
+              '   - Icon Button\t\n' +
+              '   - Text only Button\t\n' +
+              '   - Button with Prefix\t\n' +
+              '- A collapsed Search input box (`<Search expandable/>`)',
+          }),
+
+          code({
+            compact: true,
+            source: examples.bulkActionsToolbarExample,
           }),
         ],
       }),

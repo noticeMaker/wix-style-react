@@ -48,23 +48,45 @@ export const simpleExample = `
 `;
 
 export const bulkActionsToolbarExample = `
+<Card>
     <TableToolbar>
       <TableToolbar.ItemGroup position="start">
         <TableToolbar.Item>
-          <TableToolbar.SelectedCount>
-            12
-          </TableToolbar.SelectedCount>
+          <TableToolbar.SelectedCount>{\`12 Selected\`}</TableToolbar.SelectedCount>
         </TableToolbar.Item>
       </TableToolbar.ItemGroup>
       <TableToolbar.ItemGroup position="end">
         <TableToolbar.Item layout="button">
           <Button
-            onClick={() => {}}
             skin="light"
+            prefixIcon={<Icons.Upload />}
           >
-            List
+            Export
           </Button>
+        </TableToolbar.Item>
+        <TableToolbar.Item layout="button">
+          <Button
+            skin="light"
+            prefixIcon={<Icons.Duplicate />}
+          >
+            Duplicate
+          </Button>
+        </TableToolbar.Item>
+        <TableToolbar.Item layout="button">
+          <Button
+            skin="light"
+            prefixIcon={<Icons.Edit />}
+          >
+            Edit
+          </Button>
+        </TableToolbar.Item>
+        <TableToolbar.Divider />
+        <TableToolbar.Item>
+          <Search
+            expandable
+          />
         </TableToolbar.Item>
       </TableToolbar.ItemGroup>
     </TableToolbar>
+</Card>
 `;
