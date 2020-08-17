@@ -8,7 +8,7 @@ import { st, classes, vars } from './FeatureList.st.css';
 import { dataHooks } from './constants';
 
 /** A footer for the marketing Page Layout */
-class FeatureList extends React.PureComponent {
+class FeatureList extends React.Component {
   render() {
     const { dataHook, className, features, cols } = this.props;
 
