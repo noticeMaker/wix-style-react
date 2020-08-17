@@ -55,7 +55,7 @@ export type DropdownLayoutValueOption = {
   title?: boolean;
   linkTo?: string;
   overrideStyle?: boolean;
-  label?: string;
+  label?: React.ReactNode;
 };
 
 export type RenderOptionFn = (options: {
